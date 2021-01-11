@@ -1,13 +1,48 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@font-face {
+  font-family: "Montserrat";
+  src: local("Montserrat"),
+    url(./assets/fonts/Montserrat-Black.ttf) format("truetype");
+}
+@font-face {
+  font-family: "Montserrat-Regular";
+  src: local("Montserrat-Regular"),
+    url(./assets/fonts/Montserrat-Regular.ttf) format("truetype");
+}
+@font-face {
+  font-family: "Montserrat-SemiBold";
+  src: local("Montserrat-SemiBold"),
+    url(./assets/fonts/Montserrat-SemiBold.ttf) format("truetype");
+}
+@font-face {
+  font-family: "Montserrat-Light";
+  src: local("Montserrat-Light"),
+    url(./assets/fonts/Montserrat-Light.ttf) format("truetype");
+}
+@font-face {
+  font-family: "Montserrat-Italic";
+  src: local("Montserrat-Italic"),
+    url(./assets/fonts/Montserrat-Italic.ttf) format("truetype");
+}
+@font-face {
+  font-family: "Montserrat-Bold";
+  src: local("Montserrat-Bold"),
+    url(./assets/fonts/Montserrat-Bold.ttf) format("truetype");
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+body {
+  margin: 0;
+  font-family: Montserrat-Regular;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-width: 200;
+}
+
+/* code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+} */
+
+p,
+h1 {
+  margin: 0;
 }
