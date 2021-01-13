@@ -46,21 +46,20 @@
 .scrollContent {
   display: flex;
   flex-direction: row;
-  justify-content: center;
   align-items: center;
   overflow-x: scroll;
   overflow-y: hidden;
   white-space: nowrap;
-  animation: fade_move_down 1.3s ease-in 1;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
-@keyframes fade_move_down {
-  0% {
-    opacity: 0;
-    transform: scale(0.9);
-  }
-  100% {
-    opacity: 1;
-    transform: scale(1);
+.scrollContent::-webkit-scrollbar {
+  display: none;
+}
+
+@media screen and (min-width: 950px) {
+  .scrollContent {
+    justify-content: center;
   }
 }
 
@@ -88,3 +87,5 @@
     height: 575px;
   }
 }
+
+/* justify-content:flex-start */
