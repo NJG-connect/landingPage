@@ -1,35 +1,35 @@
 import React from 'react';
 import images from '../assets/images';
-import './Header.css';
+import styles from "./Header.module.css";
 
 function Header() {
   return (
-    <div id="header">
-      <div id="container">
-        <img src={images.circle} className="circle" alt="Logo" />
-        <img src={images.tiles} className="tiles" alt="Logo" />
-        <div className="firstContent">
-          <img src={images.logo} className="logoImage" alt="Logo" />
+    <div id={styles.header}>
+      <div id={styles.container}>
+        <img src={images.circle} className={styles.circle} alt="Logo" />
+        <img src={images.tiles} className={styles.tiles} alt="Logo" />
+        <div className={styles.firstContent}>
+          <img src={images.logo} className={styles.logoImage} alt="Logo" />
         </div>
         <div>
-          <p className="subtile">L'AGENCE DIGITALE QUI</p>
-          <p className="subtile">RÉPOND À VOS BESOINS</p>
+          <p className={styles.subtile}>L'AGENCE DIGITALE QUI</p>
+          <p className={styles.subtile}>RÉPOND À VOS BESOINS</p>
         </div>
-        <div className="thirdContent">
-          <img src={images.mobile} className="platformImageMobile" alt="mobile" />
+        <div className={styles.thirdContent}>
+          <img src={images.mobile} className={styles.platformImageMobile} alt="mobile" />
           <div>
-            <p className="text">Android</p>
-            <p className="text">IOS</p>
+            <p className={styles.text}>Android</p>
+            <p className={styles.text}>IOS</p>
           </div>
-          <div className="separator" />
-          <p className="text">WEB</p>
-          <img src={images.web} className="platformImageWeb" alt="web" />
+          <div className={styles.separator} />
+          <p className={styles.text}>WEB</p>
+          <img src={images.web} className={styles.platformImageWeb} alt="web" />
         </div>
       </div>
-      <div className="waveView">
-        <div className="scroll-down" />
-        <img src={images.waveTop} className="waveImage" alt="wave" />
-        <div className="waveBackground" />
+      <div className={styles.waveView}>
+        <div className={styles.arrow} />
+        <img src={images.waveTop} className={styles.waveImage} alt="wave" />
+        <div className={styles.waveBackground} />
       </div>
     </div >
   );
