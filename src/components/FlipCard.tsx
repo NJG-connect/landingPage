@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import images, { ImageType } from '../assets/images';
 import styles from './FlipCard.module.css';
 
@@ -12,22 +12,25 @@ interface Props {
 }
 
 function FlipCard({ data }: Props) {
+  const [isActive, setisActive] = useState(false);
 
   function createMarkup(data: string) {
     return { __html: `<p>${data}</p>` };
   }
 
+  function handleClick() {
+    setisActive(!isActive);
+  }
 
   return (
-    <div className={styles.flipCard}>
-      <div className={styles.flipCardInner}>
+    <div className={styles.flipCard} onClick={() => handleClick()}>
+      <div className={`${styles.flipCardInner} ${isActive && styles.flipCardHover}`}>
         <div className={styles.flipCardFront}>
           <p className={styles.title}>{data.title}</p>
           <div dangerouslySetInnerHTML={createMarkup(data.description)} className={styles.description} />
           {
             data.logo && <img src={images[data.logo as ImageType]} alt='solution' className={styles.image} />
           }
-
         </div>
         <div className={styles.flipCardBack}>
           <div dangerouslySetInnerHTML={createMarkup(data.subDescription)} className={styles.description} />

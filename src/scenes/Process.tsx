@@ -31,7 +31,7 @@ function Process() {
   return (
     <div id={styles.services} >
       <div id={styles.container}>
-        <h2 className={styles.title} >NOS SERVICES</h2>
+        <h2 className={styles.title}>NOS SERVICES</h2>
         <div className={isVisible ? styles.scrollContent : styles.scrollContentWait} ref={targetRef} >
           {transitions.map(({ item, key, props }) => (
             <animated.div className={styles.card} key={key} style={{ ...props }}>
