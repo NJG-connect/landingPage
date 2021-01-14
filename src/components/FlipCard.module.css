@@ -15,12 +15,12 @@
 }
 
 @media (hover: hover) and (pointer: fine) {
-  .flipCard:hover .flipCardInner {
+  .flipCard.flipCardHover:hover > .flipCardInner {
     transform: rotateY(180deg);
   }
 }
 
-.flipCardHover {
+.flipCardForButton {
   transform: rotateY(180deg);
 }
 
