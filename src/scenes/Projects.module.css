@@ -1,0 +1,93 @@
+#projects {
+  width: 100vw;
+  position: relative;
+  overflow-y: hidden;
+}
+
+#container {
+  background: linear-gradient(#656cff, #252559);
+  padding-top: 40px;
+  padding-bottom: 45px;
+  position: relative;
+}
+
+.waveImage {
+  display: none;
+}
+
+.title {
+  font-size: 30px;
+  color: white;
+  margin-bottom: 30px;
+  margin-top: -1px;
+  margin-left: 35px;
+}
+
+.description {
+  color: #ffffff;
+  font-size: 17px;
+  margin-left: calc(40% + 235px);
+  margin-right: 35px;
+  align-self: center;
+  text-align: center;
+}
+
+.content {
+  overflow-x: hidden;
+  width: 100vw;
+  height: 500px;
+  will-change: transform;
+  display: flex;
+}
+
+.card {
+  position: fixed;
+  will-change: transform;
+  left: 25%;
+}
+
+.cardContent {
+  background-color: white;
+  background-size: auto 100%;
+  background-repeat: no-repeat;
+  background-position: center center;
+  border-radius: 10px;
+  /* box-shadow: 0 12.5px 100px -10px rgba(50, 50, 73, 0.4),
+    0 10px 10px -10px rgba(50, 50, 73, 0.3); */
+  will-change: transform;
+  width: 235px;
+  height: 430px;
+}
+
+@media screen and (max-width: 800px) {
+  .description {
+    margin-left: 35px;
+    margin-top: 450px;
+  }
+  .card {
+    left: calc(50vw - 130px);
+  }
+  .content {
+    height: auto;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  #container {
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-top: -5px;
+  }
+
+  .waveImage {
+    display: inline-block;
+    width: 100vw;
+    margin-top: -1px;
+  }
+}
+
+@media screen and (max-width: 295px) {
+  .card {
+    left: 10%;
+  }
+}
