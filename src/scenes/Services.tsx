@@ -4,11 +4,11 @@ import { FlipCard } from '../components';
 import styles from './Services.module.css';
 import servicesJson from '../utils/services.json';
 import { useTransition, animated } from 'react-spring'
-import useVisibility from '../hooks/useVisibility';
+import useContentIsVisible from '../hooks/useElementIsVisible';
 
 function Services() {
 
-  const [targetRef, visible] = useVisibility<HTMLDivElement, boolean>();
+  const visible = useContentIsVisible('refService');
   const [isVisible, setVisible] = useState(false);
   useEffect(() => {
     if (isVisible === false) {
@@ -19,7 +19,6 @@ function Services() {
     }
     return
   }, [isVisible, visible])
-
 
   const transitions = useTransition(isVisible ? servicesJson : [], (item) => item.title, {
     unique: true,
@@ -32,7 +31,7 @@ function Services() {
     <div id={styles.services} >
       <div id={styles.container}>
         <h2 className={styles.title} >NOS SERVICES</h2>
-        <div className={isVisible ? styles.scrollContent : styles.scrollContentWait} ref={targetRef} >
+        <div id="refService" className={isVisible ? styles.scrollContent : styles.scrollContentWait}>
           {transitions.map(({ item, key, props }) => (
             <animated.div className={styles.card} key={key} style={{ ...props }}>
               <FlipCard data={item} />

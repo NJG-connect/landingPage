@@ -10,6 +10,7 @@ import flex from'./flex.png';
 import medicinal from'./medicinal.png';
 import pain from'./pain.png';
 import mobileAndWeb from'./mobileAndWeb.png';
+import drag from'./drag.png';
 
 const images =  {
   logo,
@@ -24,6 +25,7 @@ const images =  {
   medicinal,
   pain,
   mobileAndWeb,
+  drag,
 };
 
 export type ImageType =
@@ -39,5 +41,6 @@ export type ImageType =
 | "medicinal"
 | "pain"
 | "mobileAndWeb"
+| "drag"
 
 export default images;

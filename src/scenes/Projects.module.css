@@ -44,6 +44,7 @@
   position: fixed;
   will-change: transform;
   left: 25%;
+  cursor: url("./../assets/images/drag.png"), auto;
 }
 
 .cardContent {

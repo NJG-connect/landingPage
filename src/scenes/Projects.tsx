@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import images from "../assets/images";
 import styles from "./Projects.module.css";
 import { useSprings, animated, interpolate } from "react-spring";
 import { useDrag } from "react-use-gesture";
 import projectsImage, { projectsImageType } from "../assets/images/projects";
+import ContentIsVisible from "../hooks/useElementIsVisible";
 
 const cards = Object.keys(projectsImage).map((el) => projectsImage[el as projectsImageType]);
 
@@ -25,7 +26,20 @@ const trans = (r: number, s: any) =>
 function Projects() {
   const [gone] = useState(() => new Set()); // The set flags all the cards that are flicked out
   const [currentCard, setCurrentCard] = useState(cards.length - 1)
-  const [cardsSate, set] = useSprings(cards.length, (i) => ({
+  const [isVisible, setVisible] = useState(false);
+  const visible = ContentIsVisible(styles.projects);
+  useEffect(() => {
+    if (isVisible === false) {
+      if (visible) {
+        setVisible(true);
+      }
+      return
+    }
+    return
+  }, [isVisible, visible])
+
+
+  const [cardsSate, set] = useSprings(isVisible ? cards.length : 0, (i) => ({
     ...to(i),
     from: from(i),
   })); // Create a bunch of springs using the helpers above
@@ -54,7 +68,7 @@ function Projects() {
           if (index === 0) {
             setCurrentCard(cards.length - 1)
           } else {
-            setCurrentCard(currentCard - 1)
+            setCurrentCard(index)
           }
         }
 
@@ -72,16 +86,13 @@ function Projects() {
       }
     }
   );
-
   return (
     <div id={styles.projects}>
       <img src={images.waveTop} className={styles.waveImage} alt="wave" />
       <div id={styles.container}>
         <h2 className={styles.title}>NOS RÉALISATION</h2>
-        <div className={styles.content}>
-
+        <div className={styles.content} >
           {cardsSate.map(({ x, y, rot, scale }, i) => {
-            // console.log(x, y, rot, scale);
             return (
               <animated.div
                 key={i}
