@@ -22,14 +22,22 @@
   margin-top: -1px;
   margin-left: 35px;
 }
-
-.description {
-  color: #ffffff;
-  font-size: 17px;
+.contentDesc {
   margin-left: calc(40% + 235px);
   margin-right: 35px;
   align-self: center;
   text-align: center;
+}
+
+.titleCard {
+  color: #ffffff;
+  font-size: 20px;
+  font-family: Montserrat-Bold;
+  margin-bottom: 20px;
+}
+.description {
+  color: #ffffff;
+  font-size: 17px;
 }
 
 .content {
@@ -61,9 +69,12 @@
 }
 
 @media screen and (max-width: 800px) {
-  .description {
+  .contentDesc {
     margin-left: 35px;
     margin-top: 450px;
+  }
+  .titleCard {
+    display: none;
   }
   .card {
     left: calc(50vw - 130px);

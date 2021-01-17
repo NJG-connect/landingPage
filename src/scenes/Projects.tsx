@@ -1,12 +1,14 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import images from "../assets/images";
 import styles from "./Projects.module.css";
 import { useSprings, animated, interpolate } from "react-spring";
 import { useDrag } from "react-use-gesture";
 import projectsImage, { projectsImageType } from "../assets/images/projects";
 import ContentIsVisible from "../hooks/useElementIsVisible";
+import projectsJson from '../utils/projects.json';
 
-const cards = Object.keys(projectsImage).map((el) => projectsImage[el as projectsImageType]);
+const formatCards = projectsJson.map((el, index) => ({ ...el, image: projectsImage[el.keyPhoto as projectsImageType] }));
+const cards = formatCards.reverse();
 
 // These two are just helpers, they curate spring data, values that are later being interpolated into css
 const to = (i: number) => ({
@@ -38,7 +40,6 @@ function Projects() {
     return
   }, [isVisible, visible])
 
-
   const [cardsSate, set] = useSprings(isVisible ? cards.length : 0, (i) => ({
     ...to(i),
     from: from(i),
@@ -65,10 +66,15 @@ function Projects() {
         const scale = down ? 1.1 : 1; // Active cards lift up a bit
 
         if (isGone) {
-          if (index === 0) {
-            setCurrentCard(cards.length - 1)
+          if (index === currentCard) {
+            if (index === 0) {
+              setCurrentCard(cards.length - 1)
+            } else {
+              setCurrentCard(index - 1)
+            }
           } else {
-            setCurrentCard(index)
+            // @ts-ignore
+            setTimeout(() => void gone.delete(index) || set((i: any) => i === index && to(i)), 600);
           }
         }
 
@@ -109,13 +115,16 @@ function Projects() {
                   {...bind(i)}
                   style={{
                     transform: interpolate([rot, scale], trans),
-                    backgroundImage: `url(${cards[i]})`,
+                    backgroundImage: `url(${cards[i].image})`,
                   }}
                 />
               </animated.div>
             )
           })}
-          <p className={styles.description}>Gérez les interventions de vos équipes techniques directement depuis une interface dédiée, consultez l’état d’intervention en direct et instantanément </p>
+          <div className={styles.contentDesc}>
+            <p className={styles.titleCard}>{cards[currentCard].title}</p>
+            <p className={styles.description}>{cards[currentCard].description}</p>
+          </div>
         </div>
       </div>
       <img src={images.waveBottom} className={styles.waveImage} alt="wave" />
