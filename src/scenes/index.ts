@@ -2,5 +2,6 @@ import Header from "./Header";
 import Services from "./Services";
 import Process from "./Process";
 import Projects from "./Projects";
+import Contact from "./Contact";
 
-export { Header,Services, Process, Projects };
+export { Header,Services, Process, Projects, Contact };

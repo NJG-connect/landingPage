@@ -11,6 +11,7 @@ import medicinal from'./medicinal.png';
 import pain from'./pain.png';
 import mobileAndWeb from'./mobileAndWeb.png';
 import drag from'./drag.png';
+import phoneCall from'./phoneCall.svg';
 
 const images =  {
   logo,
@@ -26,6 +27,7 @@ const images =  {
   pain,
   mobileAndWeb,
   drag,
+  phoneCall,
 };
 
 export type ImageType =
@@ -42,5 +44,6 @@ export type ImageType =
 | "pain"
 | "mobileAndWeb"
 | "drag"
+| "phoneCall";
 
 export default images;

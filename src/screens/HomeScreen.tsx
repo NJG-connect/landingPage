@@ -1,5 +1,5 @@
 import React from 'react';
-import { Header, Services, Process, Projects } from '../scenes';
+import { Header, Services, Process, Projects, Contact } from '../scenes';
 
 function HomeScreen() {
   return (
@@ -8,6 +8,7 @@ function HomeScreen() {
       <Services />
       <Process />
       <Projects />
+      <Contact />
     </>
   );
 }
