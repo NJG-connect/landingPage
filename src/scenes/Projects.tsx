@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import images from "../assets/images";
 import styles from "./Projects.module.css";
 import { useSprings, animated, interpolate } from "react-spring";
 import { useDrag } from "react-use-gesture";
@@ -94,7 +93,6 @@ function Projects() {
   );
   return (
     <div id={styles.projects}>
-      <img src={images.waveTop} className={styles.waveImage} alt="wave" />
       <div id={styles.container}>
         <h2 className={styles.title}>NOS RÉALISATION</h2>
         <div className={styles.content} >
@@ -127,7 +125,6 @@ function Projects() {
           </div>
         </div>
       </div>
-      <img src={images.waveBottom} className={styles.waveImage} alt="wave" />
     </div >
   );
 }

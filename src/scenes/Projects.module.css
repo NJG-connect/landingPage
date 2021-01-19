@@ -11,10 +11,6 @@
   position: relative;
 }
 
-.waveImage {
-  display: none;
-}
-
 .title {
   font-size: 30px;
   color: white;
@@ -85,21 +81,17 @@
 }
 
 @media screen and (max-width: 500px) {
-  #container {
-    padding-top: 0;
-    padding-bottom: 0;
-    margin-top: -5px;
-  }
-
-  .waveImage {
-    display: inline-block;
-    width: 100vw;
-    margin-top: -1px;
+  .contentDesc {
+    height: 100px;
   }
 }
 
 @media screen and (max-width: 295px) {
   .card {
     left: 10%;
+  }
+
+  .contentDesc {
+    height: 150px;
   }
 }
