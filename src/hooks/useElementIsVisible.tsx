@@ -15,6 +15,8 @@ const origineMarginElement = 85;
 
 function ContentIsVisible(idOrClassNameElement: string, marginElement: number = origineMarginElement): boolean {
   const [isVisible, setisVisible] = useState(false)
+  const [windowHeight, setWindowHeight] = useState(window.innerHeight);
+
   useEffect(() => {
     document.addEventListener("scroll", () => setisVisible(isInViewport()));
     return () => {
@@ -22,13 +24,19 @@ function ContentIsVisible(idOrClassNameElement: string, marginElement: number = 
     };
   });
 
+  useEffect(() => {
+    function reportWindowSize() {
+      setWindowHeight(window.innerHeight)
+    }
+    window.addEventListener('resize', reportWindowSize)
+    return () => window.removeEventListener('resize', reportWindowSize)
+  }, [])
+
   const isInViewport = (): boolean => {
     const element = document.getElementById(idOrClassNameElement)
-    const heightWindows = window.innerHeight;
-
     const offsetOrfalse = element ? element.getBoundingClientRect().top : false;
     if (offsetOrfalse !== false) {
-      return ((offsetOrfalse / heightWindows) * 100) <= marginElement;
+      return ((offsetOrfalse / windowHeight) * 100) <= marginElement;
     } return false;
   };
   return isVisible

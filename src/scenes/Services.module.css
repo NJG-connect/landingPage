@@ -4,7 +4,6 @@
 }
 
 #container {
-  height: 550px;
   background: linear-gradient(#656cff, #252559);
   padding-top: 40px;
   padding-bottom: 45px;
@@ -81,11 +80,3 @@
     background-color: white;
   }
 }
-
-@media screen and (max-width: 295px) {
-  #container {
-    height: 575px;
-  }
-}
-
-/* justify-content:flex-start */

@@ -4,7 +4,6 @@
 }
 
 #container {
-  height: 350px;
   padding-top: 40px;
   padding-bottom: 45px;
   padding-left: 35px;
@@ -12,9 +11,25 @@
   position: relative;
 }
 
+.content {
+  min-height: 350px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 50px;
+}
+
 .title {
   font-size: 30px;
   color: #656cff;
   margin-bottom: 30px;
   margin-top: -1px;
+}
+
+.image {
+  /* width: 100%; */
+}
+
+#Groupe_30 {
+  background-color: red;
 }
