@@ -1,6 +1,8 @@
 import React, { useEffect, useMemo, useState } from 'react';
-import images from '../assets/images';
 import styles from './Process.module.css';
+import { ReactComponent as ProcessMobile } from '../assets/images/processMobile.svg';
+import { ReactComponent as ProcessTablet } from '../assets/images/processTablet.svg';
+import { ReactComponent as ProcessWeb } from '../assets/images/processWeb.svg';
 
 function Process() {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
@@ -13,26 +15,22 @@ function Process() {
     return () => window.removeEventListener('resize', reportWindowSize)
   }, [])
 
-  const processImg = useMemo(() => {
+  const ProcessSVG = () => {
     if (windowWidth >= 1150) {
-      return images.processWeb;
+      return <ProcessWeb />;
     }
     else if (windowWidth <= 680) {
-      return images.processMobile;
+      return <ProcessMobile />;
     }
-    else {
-      return images.processTablet
-    }
-  }, [windowWidth])
-
-
+    return <ProcessTablet />
+  }
 
   return (
     <div id={styles.services} >
       <div id={styles.container}>
-        <h2 className={styles.title} >NOTRE PROCESSUS</h2>
+        <p className={styles.subtitle} >Notre savoir faire à votre service</p>
         <div className={styles.content}>
-          <img src={processImg} alt="process" className={styles.image} />
+          <ProcessSVG />
         </div>
       </div >
     </div >
