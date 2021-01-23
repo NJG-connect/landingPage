@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './Process.module.css';
 import { ReactComponent as ProcessMobile } from '../assets/images/processMobile.svg';
 import { ReactComponent as ProcessTablet } from '../assets/images/processTablet.svg';

@@ -1,23 +1,49 @@
 import React, { useState } from "react";
+import sendEmail from "../api/sendEmail";
 import images from "../assets/images";
 import { TextInput } from "../components";
 import styles from "./Contact.module.css";
 
 const contactNumber = "07 78 03 91 93";
 
+const initialUserValue = {
+  name: undefined,
+  society: undefined,
+  contact: undefined,
+}
+
 function Contact() {
   const [infoUser, setInfoUser] = useState<{
     name?: string;
     society?: string;
-    numberOrEmail?: string;
-  }>({
-    name: undefined,
-    society: undefined,
-    numberOrEmail: undefined,
-  });
+    contact?: string;
+  }>(initialUserValue);
+
+  const handleSendEmail = async (event: React.FormEvent<HTMLFormElement>) => {
+    if (Object.values(infoUser).every(el => !!el)) {
+      await sendEmail(infoUser);
+      setInfoUser(initialUserValue)
+      printToast();
+    }
+    event.preventDefault();
+    return false;
+  }
+
+  const printToast = () => {
+    var toastElement: HTMLElement = document.getElementById("toast")!
+    // Add the "show" class to DIV
+    toastElement.className = `${styles.toast} ${styles.show}`;
+    // After 3 seconds, remove the show class from DIV
+    setTimeout(function () { toastElement.className = toastElement.className.replace(styles.show, ""); }, 5000);
+  }
+
 
   return (
-    <div id={styles.contact}>
+    <div id="contact" className={styles.contact}>
+      <div id="toast" className={styles.toast} >
+        <img src={images.icon} alt="icon" id="img" className={styles.img} />
+        <div id="desc" className={styles.desc}>l'email a bien été envoyé</div>
+      </div>
       <div id={styles.container}>
         <h2 className={styles.title}>
           …alors ne perdons pas de temps entrons en contact !
@@ -35,7 +61,7 @@ function Contact() {
             <p className={styles.separatorText}>ou</p>
           </div>
           <div className={styles.rightContent}>
-            <form action="" method="get" className={styles.form}>
+            <form onSubmit={(e) => handleSendEmail(e)} className={styles.form}>
               <TextInput
                 value={infoUser.name}
                 onChange={(name: string) => setInfoUser({ ...infoUser, name })}
@@ -49,13 +75,15 @@ function Contact() {
                 label="Société"
               />
               <TextInput
-                value={infoUser.numberOrEmail}
-                onChange={(numberOrEmail: string) =>
-                  setInfoUser({ ...infoUser, numberOrEmail })
+                value={infoUser.contact}
+                onChange={(contact: string) =>
+                  setInfoUser({ ...infoUser, contact })
                 }
                 label="Mail / Tel"
               />
-              <input className={styles.button} type="submit" value="Entrer en contact" />
+              <button type="submit" className={styles.button} >
+                <p>Entrer en contact</p>
+              </button>
             </form>
           </div>
         </div>

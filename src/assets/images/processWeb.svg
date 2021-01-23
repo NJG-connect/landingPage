@@ -10,20 +10,6 @@
     -ms-user-select: none;
     user-select: none;
     }
-    
-    <!-- #groupe33,
-#groupe30,
-#groupe31,
-#groupe32 {
-  transition: transform 0.2s;
-}
-
-#groupe33:hover,
-#groupe30:hover,
-#groupe31:hover,
-#groupe32:hover {
-  transform: scale(1.1);
-} -->
   </style>
 
     <pattern id="pattern" preserveAspectRatio="none" width="100%" height="100%" viewBox="0 0 512 512">
