@@ -86,7 +86,7 @@
 }
 
 .phoneCallText {
-  font-family: Montserrat-Bold;
+  font-family: Montserrat-semiBold;
   font-size: 30px;
 }
 
@@ -120,6 +120,7 @@
     justify-content: center;
     height: auto;
     margin-bottom: 50px;
+    margin-top: 80px;
   }
 
   .leftContent {

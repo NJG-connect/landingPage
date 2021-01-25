@@ -36,7 +36,7 @@ label {
 
 /* active state */
 input:focus ~ label,
-input:valid ~ label {
+input[value]:not([value=""]) ~ label {
   top: -20px;
   font-size: 14px;
   color: #3a42ff;

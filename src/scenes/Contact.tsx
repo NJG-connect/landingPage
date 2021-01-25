@@ -20,20 +20,20 @@ function Contact() {
   }>(initialUserValue);
 
   const handleSendEmail = async (event: React.FormEvent<HTMLFormElement>) => {
-    if (Object.values(infoUser).every(el => !!el)) {
-      await sendEmail(infoUser);
-      setInfoUser(initialUserValue)
-      printToast();
-    }
     event.preventDefault();
-    return false;
+    if (Object.values(infoUser).every(el => !!el)) {
+      setInfoUser(initialUserValue)
+      await sendEmail(infoUser);
+      printToast();
+      return false;
+    }
   }
 
   const printToast = () => {
     var toastElement: HTMLElement = document.getElementById("toast")!
     // Add the "show" class to DIV
     toastElement.className = `${styles.toast} ${styles.show}`;
-    // After 3 seconds, remove the show class from DIV
+    // After 5 seconds, remove the show class from DIV
     setTimeout(function () { toastElement.className = toastElement.className.replace(styles.show, ""); }, 5000);
   }
 
@@ -61,11 +61,12 @@ function Contact() {
             <p className={styles.separatorText}>ou</p>
           </div>
           <div className={styles.rightContent}>
-            <form onSubmit={(e) => handleSendEmail(e)} className={styles.form}>
+            <form method="post" onSubmit={(e) => handleSendEmail(e)} className={styles.form}>
               <TextInput
                 value={infoUser.name}
                 onChange={(name: string) => setInfoUser({ ...infoUser, name })}
                 label="Nom"
+                required
               />
               <TextInput
                 value={infoUser.society}
@@ -75,6 +76,7 @@ function Contact() {
                 label="Société"
               />
               <TextInput
+                required
                 value={infoUser.contact}
                 onChange={(contact: string) =>
                   setInfoUser({ ...infoUser, contact })
