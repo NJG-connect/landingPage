@@ -1,0 +1,23 @@
+.footer {
+  width: 100vw;
+  height: 55px;
+  background: #252559;
+  position: relative;
+  overflow-y: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+p {
+  color: white;
+}
+
+@media screen and (max-width: 800px) {
+}
+
+@media screen and (max-width: 500px) {
+}
+
+@media screen and (max-width: 295px) {
+}

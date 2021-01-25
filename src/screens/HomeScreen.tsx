@@ -1,6 +1,6 @@
 import React from 'react';
 import { FloatButton } from '../components';
-import { Header, Services, Process, Projects, Contact } from '../scenes';
+import { Header, Services, Process, Projects, Contact, Footer } from '../scenes';
 
 function HomeScreen() {
   return (
@@ -11,6 +11,7 @@ function HomeScreen() {
       <Process />
       <Projects />
       <Contact />
+      <Footer />
     </>
   );
 }
