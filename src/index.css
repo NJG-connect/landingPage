@@ -100,12 +100,14 @@ button:focus {
   outline: 0;
 }
 
-html {
+html,
+#root {
   scroll-behavior: smooth;
 }
 
 @media screen and (prefers-reduced-motion: reduce) {
-  html {
+  html,
+  #root {
     scroll-behavior: auto;
   }
 }

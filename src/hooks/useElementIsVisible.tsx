@@ -7,10 +7,8 @@ there is a number restriction between 0 and 100
 where 0 corresponds when the element reaches the top edges or the element is fully visible
 
 and 100 correspond so when the element arrives at the bottom is not yet visible
-
-
-
 */
+
 const origineMarginElement = 85;
 
 function ContentIsVisible(idOrClassNameElement: string, marginElement: number = origineMarginElement): boolean {
@@ -18,10 +16,12 @@ function ContentIsVisible(idOrClassNameElement: string, marginElement: number = 
   const [windowHeight, setWindowHeight] = useState(window.innerHeight);
 
   useEffect(() => {
-    document.addEventListener("scroll", () => setisVisible(isInViewport()));
-    return () => {
-      document.removeEventListener("scroll", () => setisVisible(isInViewport()));
-    };
+    if (document.getElementById("root") !== null) {
+      document.getElementById("root")!.addEventListener("scroll", () => setisVisible(isInViewport()));
+      return () => {
+        document.getElementById("root")!.removeEventListener("scroll", () => setisVisible(isInViewport()));
+      };
+    }
   });
 
   useEffect(() => {
