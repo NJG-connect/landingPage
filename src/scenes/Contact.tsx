@@ -30,7 +30,7 @@ function Contact(props: Props) {
     event.preventDefault();
     if (Object.entries(infoUser).every(([key, value]) => !!value || key === "society") && !props.mailHasSent) {
       setInfoUser(initialUserValue)
-      // await sendEmail(infoUser);
+      await sendEmail(infoUser);
       props.sendEmail();
       show({ message: "l'email a bien été envoyé" });
       return false;
