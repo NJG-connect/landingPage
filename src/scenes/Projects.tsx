@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import styles from "./Projects.module.css";
 import { useSprings, animated, interpolate } from "react-spring";
 import { useDrag } from "react-use-gesture";
@@ -29,15 +29,18 @@ function Projects() {
   const [currentCard, setCurrentCard] = useState(cards.length - 1)
   const [isVisible, setVisible] = useState(false);
   const visible = ContentIsVisible(styles.projects);
+  const [activeAnimation, setActiveAnimation] = useState<boolean | 0>(false);
+
   useEffect(() => {
     if (isVisible === false) {
       if (visible) {
         setVisible(true);
+        setActiveAnimation(!activeAnimation);
       }
       return
     }
     return
-  }, [isVisible, visible])
+  }, [activeAnimation, isVisible, visible])
 
   const [cardsSate, set] = useSprings(isVisible ? cards.length : 0, (i) => ({
     ...to(i),
@@ -68,10 +71,13 @@ function Projects() {
           if (index === currentCard) {
             if (index === 0) {
               setCurrentCard(cards.length - 1)
+              setActiveAnimation(0);
             } else {
               setCurrentCard(index - 1)
+              setActiveAnimation(!activeAnimation);
             }
           } else {
+            // if dont swipe first card, we put the swipe card on package 
             // @ts-ignore
             setTimeout(() => void gone.delete(index) || set((i: any) => i === index && to(i)), 600);
           }
@@ -91,6 +97,17 @@ function Projects() {
       }
     }
   );
+
+  const styleNameForAnimation = useMemo(() => {
+    if (activeAnimation) {
+      return styles.animationCardTrue;
+    }
+    if (activeAnimation === 0) {
+      return styles.animationCardFirstCard;
+    }
+    return styles.animationCardFalse;
+  }, [activeAnimation])
+
   return (
     <div id={styles.projects}>
       <div id={styles.container}>
@@ -119,7 +136,7 @@ function Projects() {
               </animated.div>
             )
           })}
-          <div className={styles.contentDesc}>
+          <div id="contentDescCard" className={`${styles.contentDesc} ${styleNameForAnimation}`}>
             <p className={styles.titleCard}>{cards[currentCard].title}</p>
             <p className={styles.description}>{cards[currentCard].description}</p>
           </div>

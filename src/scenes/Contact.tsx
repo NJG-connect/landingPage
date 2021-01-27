@@ -1,8 +1,14 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import sendEmail from "../api/sendEmail";
 import images from "../assets/images";
 import { TextInput } from "../components";
+import { ToastContext } from "../contexts/ToastContext";
 import styles from "./Contact.module.css";
+
+interface Props {
+  sendEmail: () => void;
+  mailHasSent: boolean;
+}
 
 const contactNumber = "07 78 03 91 93";
 
@@ -12,7 +18,8 @@ const initialUserValue = {
   contact: undefined,
 }
 
-function Contact() {
+function Contact(props: Props) {
+  const { show } = useContext(ToastContext);
   const [infoUser, setInfoUser] = useState<{
     name?: string;
     society?: string;
@@ -21,29 +28,19 @@ function Contact() {
 
   const handleSendEmail = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    if (Object.values(infoUser).every(el => !!el)) {
+    if (Object.entries(infoUser).every(([key, value]) => !!value || key === "society") && !props.mailHasSent) {
       setInfoUser(initialUserValue)
-      await sendEmail(infoUser);
-      printToast();
+      // await sendEmail(infoUser);
+      props.sendEmail();
+      show({ message: "l'email a bien été envoyé" });
       return false;
+    } else {
+      show({ message: "Votre message a déjà été transmis" });
     }
   }
 
-  const printToast = () => {
-    var toastElement: HTMLElement = document.getElementById("toast")!
-    // Add the "show" class to DIV
-    toastElement.className = `${styles.toast} ${styles.show}`;
-    // After 5 seconds, remove the show class from DIV
-    setTimeout(function () { toastElement.className = toastElement.className.replace(styles.show, ""); }, 5000);
-  }
-
-
   return (
     <div id="contact" className={styles.contact}>
-      <div id="toast" className={styles.toast} >
-        <img src={images.icon} alt="icon" id="img" className={styles.img} />
-        <div id="desc" className={styles.desc}>l'email a bien été envoyé</div>
-      </div>
       <div id={styles.container}>
         <h2 className={styles.title}>
           …alors ne perdons pas de temps entrons en contact !

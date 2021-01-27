@@ -1,17 +1,26 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import images from '../assets/images';
+import { ToastContext } from '../contexts/ToastContext';
 import styles from './FloatButton.module.css';
 
+interface Props {
+  initalValue?: boolean;
+}
 
-
-function FloatButton() {
+function FloatButton({ initalValue }: Props) {
+  const { show } = useContext(ToastContext);
   const handleMoveToContact = () => {
-    document.getElementById('contact')!.scrollIntoView();
+    if (!initalValue) {
+      document.getElementById('contact')!.scrollIntoView();
+    } else {
+      show({ message: 'Votre message a déjà été transmis' });
+    }
+
   }
 
   return (
     <div className={styles.bubble} onClick={() => handleMoveToContact()}>
-      <img src={images.mail} alt="mail" className={styles.image} />
+      <img src={initalValue ? images.mailSend : images.mail} alt="mail" className={styles.image} />
     </div>
   )
 }

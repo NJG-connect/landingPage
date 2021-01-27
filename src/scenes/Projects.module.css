@@ -31,6 +31,52 @@
   font-family: Montserrat-Bold;
   margin-bottom: 20px;
 }
+
+.animationCardFirstCard {
+  animation: tryAnimationOne 2s step-end;
+}
+
+@keyframes tryAnimationOne {
+  from {
+    opacity: 0;
+    visibility: hidden;
+  }
+  to {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+.animationCardTrue {
+  animation: tryAnimationOne 3s;
+}
+
+@keyframes tryAnimationOne {
+  from {
+    opacity: 0;
+    visibility: hidden;
+  }
+  to {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+.animationCardFalse {
+  animation: tryAnimationTwo 3s;
+}
+
+@keyframes tryAnimationTwo {
+  from {
+    opacity: 0;
+    visibility: hidden;
+  }
+  to {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
 .description {
   color: #ffffff;
   font-size: 17px;
