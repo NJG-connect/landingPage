@@ -36,45 +36,12 @@
   animation: tryAnimationOne 2s step-end;
 }
 
-@keyframes tryAnimationOne {
-  from {
-    opacity: 0;
-    visibility: hidden;
-  }
-  to {
-    opacity: 1;
-    visibility: visible;
-  }
-}
-
 .animationCardTrue {
   animation: tryAnimationOne 3s;
 }
 
-@keyframes tryAnimationOne {
-  from {
-    opacity: 0;
-    visibility: hidden;
-  }
-  to {
-    opacity: 1;
-    visibility: visible;
-  }
-}
-
 .animationCardFalse {
   animation: tryAnimationTwo 3s;
-}
-
-@keyframes tryAnimationTwo {
-  from {
-    opacity: 0;
-    visibility: hidden;
-  }
-  to {
-    opacity: 1;
-    visibility: visible;
-  }
 }
 
 .description {
@@ -139,5 +106,38 @@
 
   .contentDesc {
     height: 150px;
+  }
+}
+
+@keyframes tryAnimationOne {
+  from {
+    opacity: 0;
+    visibility: hidden;
+  }
+  to {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+@keyframes tryAnimationOne {
+  from {
+    opacity: 0;
+    visibility: hidden;
+  }
+  to {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+@keyframes tryAnimationTwo {
+  from {
+    opacity: 0;
+    visibility: hidden;
+  }
+  to {
+    opacity: 1;
+    visibility: visible;
   }
 }
