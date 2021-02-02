@@ -11,7 +11,7 @@ function FloatButton({ initalValue }: Props) {
   const { show } = useContext(ToastContext);
   const handleMoveToContact = () => {
     if (!initalValue) {
-      document.getElementById('contact')!.scrollIntoView();
+      document.getElementById('contact')!.scrollIntoView({ behavior: 'smooth' });
     } else {
       show({ message: 'Votre message a déjà été transmis' });
     }
