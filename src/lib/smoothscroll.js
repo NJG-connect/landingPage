@@ -1,5 +1,3 @@
-"use strict";
-
 // polyfill
 function polyfill() {
   // aliases

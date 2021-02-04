@@ -1,8 +1,9 @@
 import React from 'react';
 import { Toast } from './components';
 import { ToastProvider } from './contexts/ToastContext';
-import { HomeScreen } from './screens';
+import { HomeScreen, ContactScreen } from './screens';
 import smoothscroll from './lib/smoothscroll.js';
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 smoothscroll.polyfill();
 
@@ -10,8 +11,14 @@ function App() {
   return (
     <ToastProvider>
       <Toast />
-      <HomeScreen />
-    </ToastProvider>
+      <Router>
+        <Switch>
+          <Route path="/contact/:id" component={ContactScreen} />
+          <Route path="/contact" component={ContactScreen} />
+          <Route path="/" component={HomeScreen} />
+        </Switch>
+      </Router>
+    </ToastProvider >
   )
 }
 

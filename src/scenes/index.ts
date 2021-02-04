@@ -4,5 +4,6 @@ import Process from "./Process";
 import Projects from "./Projects";
 import Contact from "./Contact";
 import Footer from "./Footer";
+import SpecificContact from "./SpecificContact";
 
-export { Header,Services, Process, Projects, Contact, Footer };
+export { Header,Services, Process, Projects, Contact, Footer, SpecificContact };
