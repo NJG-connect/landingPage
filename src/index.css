@@ -71,11 +71,13 @@ p,
 h1,
 h2,
 pre,
-button {
+button,
+a {
   margin: 0;
   padding: 0;
 }
-button {
+button,
+a {
   border: none;
   margin: 0;
   padding: 0;
@@ -94,6 +96,10 @@ button {
 
   /* Corrects inability to style clickable `input` types in iOS */
   -webkit-appearance: none;
+}
+
+a {
+  text-decoration: none;
 }
 
 button:focus {
