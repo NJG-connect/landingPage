@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import styles from './Process.module.css';
-import { ReactComponent as ProcessMobile } from '../assets/images/processMobile.svg';
-import { ReactComponent as ProcessTablet } from '../assets/images/processTablet.svg';
-import { ReactComponent as ProcessWeb } from '../assets/images/processWeb.svg';
+import images from '../assets/images';
 
 function Process() {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
@@ -17,12 +15,12 @@ function Process() {
 
   const ProcessSVG = () => {
     if (windowWidth >= 1150) {
-      return <ProcessWeb />;
+      return <img src={images.processWeb} alt="process" />
     }
     else if (windowWidth <= 680) {
-      return <ProcessMobile />;
+      return <img src={images.processMobile} alt="process" />
     }
-    return <ProcessTablet />
+    return <img src={images.processTablet} alt="process" />
   }
 
   return (
