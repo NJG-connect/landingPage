@@ -115,7 +115,7 @@ function Projects() {
   return (
     <div id={styles.projects}>
       <div id={styles.container}>
-        <h2 className={styles.title}>NOS RÉALISATION</h2>
+        <h2 className={styles.title}>NOS RÉALISATIONS</h2>
         <div className={styles.content} >
           {cardsSate.map(({ x, y, rot, scale }, i) => {
             return (

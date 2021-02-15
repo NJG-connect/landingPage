@@ -1,5 +1,5 @@
 #header {
-  height: 100vh;
+  /* height: 100vh; */
   width: 100vw;
   overflow: hidden;
   position: relative;
@@ -40,6 +40,7 @@
   margin-top: 10px;
   text-shadow: 1px 7px rgb(146, 142, 142, 0.09);
   font-family: Montserrat-SemiBold;
+  text-align: center;
 }
 
 .circle {
@@ -114,14 +115,13 @@
     right: -50px;
   }
   #container {
-    height: 85vh;
+    height: 80vh;
   }
 
   .waveView {
     display: inline-block;
     width: 100vw;
     height: 15vh;
-    overflow: hidden;
     position: relative;
     margin: 0;
   }

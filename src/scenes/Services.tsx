@@ -38,7 +38,7 @@ function Services() {
             </animated.div>
           ))}
         </div>
-        <p className={styles.description}>En marche vers l'évolution digitale...</p>
+        <p className={styles.description}>Vers une évolution digitale...</p>
       </div>
       <img src={images.waveBottom} className={styles.waveImage} alt="wave" />
 

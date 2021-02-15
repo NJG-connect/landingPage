@@ -13,7 +13,7 @@ function Header() {
         </div>
         <div>
           <p className={styles.subtile}>L'AGENCE DIGITALE QUI</p>
-          <p className={styles.subtile}>RÉPOND À VOS BESOINS</p>
+          <p className={styles.subtile}>VOUS CONNECTE Á VOTRE AVENIR</p>
         </div>
         <div className={styles.thirdContent}>
           <img src={images.mobile} className={styles.platformImageMobile} alt="mobile" />
