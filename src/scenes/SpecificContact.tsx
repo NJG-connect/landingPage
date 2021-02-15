@@ -2,6 +2,7 @@ import React from 'react';
 import contactImage, { contactImageType } from '../assets/images/contact';
 import { ContactWithSociety } from '../screens/ContactScreen';
 import styles from "./SpecificContact.module.css";
+import ReactGA from 'react-ga';
 var vCardsJS = require('vcards-js');
 
 interface Props {
@@ -11,6 +12,10 @@ interface Props {
 function SpecificContact({ info }: Props) {
 
   function donwload() {
+
+    // GOOGLE ANALYTICS
+    ReactGA.event({ category: 'download', action: 'Download Contact' })
+
     // //create a new vCard
     var vCard = vCardsJS();
     //set properties

@@ -57,6 +57,7 @@ Ce projet est créer en React.Js pour l'installer / le lancer merci de suivre le
 |   REACT_APP_EMAILJS_USER_ID    |
 | REACT_APP_EMAILSJS_TEMPLATE_ID |
 | REACT_APP_EMAILSJS_SERVICE_ID  |
+|   REACT_APP_GOOGLE_ANALYTICS   |
 
 Comme vous avez pu le constater nous avons utilisé la Lib : [EmailJS](https://www.emailjs.com/) afin d'envoyer des mails.
 
