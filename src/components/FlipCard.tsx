@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import images, { ImageType } from '../assets/images';
 import styles from './FlipCard.module.css';
+import ReactGA from 'react-ga';
 
 interface Props {
   data: {
@@ -29,6 +30,10 @@ function FlipCard({ data }: Props) {
 
   function handleClick() {
     if (canFlip) {
+
+      // GOOGLE ANALYTICS
+      ReactGA.event({ category: 'scrollTo', action: 'go to contact part' })
+
       setisActive(!isActive);
     }
     return;
