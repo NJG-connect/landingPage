@@ -1,5 +1,5 @@
 <p align="center">
-    <img alt="icon-tripplanApp" src="./src/assets/images/logo.svg" >
+    <img alt="icon-njgconnect" src="./src/assets/images/logo.svg" >
 </p>
 <h1 align="center">NJG connect</h1>
 
