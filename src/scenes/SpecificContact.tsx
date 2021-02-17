@@ -14,7 +14,7 @@ function SpecificContact({ info }: Props) {
   function donwload() {
 
     // GOOGLE ANALYTICS
-    ReactGA.event({ category: 'download', action: 'Download Contact' })
+    ReactGA.event({ category: 'contact', action: 'Download Contact' })
 
     // //create a new vCard
     var vCard = vCardsJS();
@@ -34,8 +34,11 @@ function SpecificContact({ info }: Props) {
     link.setAttribute('download', `vcard_${info.contact.firstname}_${info.contact.lastname}.vcf`);
     document.body.appendChild(link);
     link.click();
+  }
 
-
+  function onPressOnSocialNetworks(value: 'mail' | 'phone' | 'linkedIn') {
+    // GOOGLE ANALYTICS
+    ReactGA.event({ category: 'contact', action: `click on ${value}` })
   }
 
   return (
@@ -47,11 +50,11 @@ function SpecificContact({ info }: Props) {
             <h2>{info.contact.firstname} {info.contact.lastname}</h2>
           </div>
           <div className={styles.headerButton}>
-            <a className={styles.headerButtonContent} href={`tel:${info.contact.phone}`}>
+            <a className={styles.headerButtonContent} href={`tel:${info.contact.phone}`} onClick={() => onPressOnSocialNetworks("phone")}>
               <img className={styles.headerIcon} alt="Telephone" src={contactImage.call} />
               <p>APPELER</p>
             </a>
-            <a className={styles.headerButtonContent} href={`mailto:${info.contact.email}?subject=Prise de Contact&body=`}>
+            <a className={styles.headerButtonContent} href={`mailto:${info.contact.email}?subject=Prise de Contact&body=`} onClick={() => onPressOnSocialNetworks("mail")}>
               <img className={styles.headerIcon} alt="Email" src={contactImage.sendmail} />
               <p>E-EMAIL</p>
             </a>
@@ -61,14 +64,20 @@ function SpecificContact({ info }: Props) {
 
       <div className={styles.container}>
         <RowWithIcon title={info.contact.role} />
-        <RowWithIcon title={info.contact.phone} placeholder="Mobile" icon="callGrey" link={`tel:${info.contact.phone}`} />
-        <RowWithIcon title={info.contact.email} placeholder="E-mail" icon="mail" link={`mailto:${info.contact.email}?subject=Prise de Contact&body=`} />
+        <RowWithIcon title={info.contact.phone} placeholder="Mobile" icon="callGrey" link={`tel:${info.contact.phone}`} onClick={() => onPressOnSocialNetworks("phone")} />
+        <RowWithIcon title={info.contact.email} placeholder="E-mail" icon="mail" link={`mailto:${info.contact.email}?subject=Prise de Contact&body=`} onClick={() => onPressOnSocialNetworks("mail")} />
         <RowWithIcon title={info.society.name} icon="entreprise" />
         <RowWithIcon title={info.society.web} placeholder="Site Web" icon="web" link={"/"} />
 
         <h4>Médias Sociaux</h4>
         <div className={styles.socialMediaContent}>
-          <a href={info.contact.linkedIn} className={styles.link} target="_blank" rel="noreferrer">
+          <a
+            href={info.contact.linkedIn}
+            className={styles.link}
+            target="_blank"
+            rel="noreferrer"
+            onClick={() => onPressOnSocialNetworks("linkedIn")}
+          >
             <img src={contactImage.linkedin} className={styles.iconSocial} alt="linkedIn" />
           </a>
         </div>
@@ -90,6 +99,7 @@ interface RowWithIconProps {
   title: string;
   placeholder?: string;
   link?: string;
+  onClick?: () => void;
 }
 
 function RowWithIcon(props: RowWithIconProps) {
@@ -99,7 +109,7 @@ function RowWithIcon(props: RowWithIconProps) {
         {props.icon && <img className={styles.iconSizeRow} src={contactImage[props.icon!]} alt="logoIcon" />}
       </div>
       <div className={styles.contentInfoRow}>
-        <a href={props.link} className={props.link ? styles.link : ''} >
+        <a href={props.link} className={props.link ? styles.link : ''} onClick={props.onClick} >
           <p>{props.title}</p>
           {props.placeholder && <p className={styles.placeholderRow}>{props.placeholder}</p>}
         </a>
