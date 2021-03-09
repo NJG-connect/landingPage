@@ -11,7 +11,7 @@ interface Props {
   mailHasSent: boolean;
 }
 
-const contactNumber = "07 78 03 91 93";
+const contactNumber = "07 56 99 74 93";
 
 const initialUserValue = {
   name: undefined,
