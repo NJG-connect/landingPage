@@ -1,26 +1,33 @@
-import React from 'react';
-import logo from './logo.svg';
-import { HomeScreen } from './screens';
+import React, { useEffect } from 'react';
+import { Toast } from './components';
+import { ToastProvider } from './contexts/ToastContext';
+import { HomeScreen, ContactScreen } from './screens';
+import smoothscroll from './lib/smoothscroll.js';
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import ReactGA from 'react-ga';
+
+smoothscroll.polyfill();
 
 function App() {
-  return <HomeScreen />
-  // <div className="App">
-  //   <header className="App-header">
-  //     <img src={logo} className="App-logo" alt="logo" />
-  //     <p>
-  //       Edit <code>src/App.tsx</code> and save to reload.
-  //     </p>
-  //     <a
-  //       className="App-link"
-  //       href="https://reactjs.org"
-  //       target="_blank"
-  //       rel="noopener noreferrer"
-  //     >
-  //       Learn React
-  //     </a>
-  //   </header>
-  // </div>
 
+  useEffect(() => {
+    ReactGA.initialize(process.env.REACT_APP_GOOGLE_ANALYTICS || '');
+    ReactGA.pageview(window.location.pathname);
+  }, [])
+
+
+  return (
+    <ToastProvider>
+      <Toast />
+      <Router>
+        <Switch>
+          <Route path="/contact/:id" component={ContactScreen} />
+          <Route path="/contact" component={ContactScreen} />
+          <Route path="/" component={HomeScreen} />
+        </Switch>
+      </Router>
+    </ToastProvider >
+  )
 }
 
 export default App;

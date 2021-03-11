@@ -1,46 +1,83 @@
-# Getting Started with Create React App
+<p align="center">
+    <img alt="icon-njgconnect" src="./src/assets/images/logo.svg" >
+</p>
+<h1 align="center">NJG connect</h1>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+[![Netlify Status](https://api.netlify.com/api/v1/badges/e970d707-7e6d-48fb-8157-b5df93132451/deploy-status)](https://app.netlify.com/sites/njgconnect/deploys)
 
-## Available Scripts
+> Parce-que nous connaître c'est bien, mais analyser notre code c'est mieux !!!
 
-In the project directory, you can run:
+<br />
 
-### `yarn start`
+## Présentation Projet
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Ceci est notre site vitrine, _landing page_ afin de mieux nous comprendre, découvrir nos services ainsi que nos réalisations.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Description
 
-### `yarn test`
+<details>
+<summary> 😲 Une One-Page élégante & rafinée  </summary>
+<p>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+> Nous avons essayé de resté simple & épuré
+> sans trop d'animations
 
-### `yarn build`
+</p>
+</details>
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+<details>
+<summary> 👀 🂡  Visualise les réalisations  </summary>
+<p>
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+> Nos réalisations sont proposées sous forme de carte
+> Slide pour toutes les découvrir
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+</p>
+</details>
 
-### `yarn eject`
+<details>
+<summary> 😏 Une prise de contact si tu match... </summary>
+<p>
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+> Pourquoi pas nous contacter si tu as trouvé ton bonheur
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+</p>
+</details>
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## Exécution
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Ce projet est créer en React.Js pour l'installer / le lancer merci de suivre les étapes suivantes :
 
-## Learn More
+**Créer & Editer le .env**
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+à la racine créer et ajouter les clés suivantes :
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+|              Key               |
+| :----------------------------: |
+|   REACT_APP_EMAILJS_USER_ID    |
+| REACT_APP_EMAILSJS_TEMPLATE_ID |
+| REACT_APP_EMAILSJS_SERVICE_ID  |
+|   REACT_APP_GOOGLE_ANALYTICS   |
+
+Comme vous avez pu le constater nous avons utilisé la Lib : [EmailJS](https://www.emailjs.com/) afin d'envoyer des mails.
+
+### Commande à savoir
+
+<kbd>npm i</kbd> or <kbd> yarn install</kbd> - Install Dependencies
+
+<kbd> yarn start</kbd> - Run the App
+
+En savoir plus sur :
+
+- React.js : [For Develop this Project](https://fr.reactjs.org/)
+
+ENJOY 🙂
+
+## Team
+
+- Designé par [Jonathan Nohile](https://www.linkedin.com/in/jonathan-nohile)
+- Développé par [Jeremy Noh](https://github.com/JeremyNoh)
+
+<br />
+
+Merci à vous 🤗
