@@ -29,7 +29,7 @@ export interface ContactWithSociety {
 }
 
 function ContactScreen({ match }: Props) {
-
+  document.title = "NJG connect - Contact";
   const contact: ContactWithSociety = useMemo(() => {
     const contactId = match.params.id
     const contact = contactsJson.contacts.find(contact => contact.urlId === contactId) ||
