@@ -2,31 +2,37 @@
   font-family: "Montserrat";
   src: local("Montserrat"),
     url(./assets/fonts/Montserrat-Black.ttf) format("truetype");
+  font-display: swap;
 }
 @font-face {
   font-family: "Montserrat-Regular";
   src: local("Montserrat-Regular"),
     url(./assets/fonts/Montserrat-Regular.ttf) format("truetype");
+  font-display: swap;
 }
 @font-face {
   font-family: "Montserrat-SemiBold";
   src: local("Montserrat-SemiBold"),
     url(./assets/fonts/Montserrat-SemiBold.ttf) format("truetype");
+  font-display: swap;
 }
 @font-face {
   font-family: "Montserrat-Light";
   src: local("Montserrat-Light"),
     url(./assets/fonts/Montserrat-Light.ttf) format("truetype");
+  font-display: swap;
 }
 @font-face {
   font-family: "Montserrat-Italic";
   src: local("Montserrat-Italic"),
     url(./assets/fonts/Montserrat-Italic.ttf) format("truetype");
+  font-display: swap;
 }
 @font-face {
   font-family: "Montserrat-Bold";
   src: local("Montserrat-Bold"),
     url(./assets/fonts/Montserrat-Bold.ttf) format("truetype");
+  font-display: swap;
 }
 
 html,

@@ -28,7 +28,7 @@ function LoaderAnimation({ setLoadingAnimation }: Props) {
         onAnimationEnd={() => setFadePage(true)}
         ref={elementRef} id="gifLogo"
         src={AnimationImage.logoAnim}
-        alt="dedede"
+        alt="Animation NJG Connect"
         className={`${styles.image} ${animationIsFinish ? styles.animatedLogo : ''}`}
       />
     </div >

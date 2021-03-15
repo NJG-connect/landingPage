@@ -15,12 +15,12 @@ function Process() {
 
   const ProcessSVG = () => {
     if (windowWidth >= 1150) {
-      return <img src={images.processWeb} alt="process" />
+      return <img src={images.processWeb} alt="process" className={styles.images} />
     }
     else if (windowWidth <= 680) {
-      return <img src={images.processMobile} alt="process" />
+      return <img src={images.processMobile} alt="process" className={styles.images} />
     }
-    return <img src={images.processTablet} alt="process" />
+    return <img src={images.processTablet} alt="process" className={styles.images} />
   }
 
   return (

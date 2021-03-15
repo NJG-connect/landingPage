@@ -23,6 +23,7 @@
 
 .image {
   height: 40px;
+  width: auto;
   align-self: center;
 }
 
