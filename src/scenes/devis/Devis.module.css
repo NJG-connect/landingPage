@@ -9,8 +9,38 @@
   z-index: 1;
   position: fixed;
   left: 0;
-  top: 0;
+  bottom: 0;
+  animation: startAnimation 0.8s  forwards, MiniMyseAnimation 0.3s 0.7s forwards,  ScaleAnimation 0.5s 0.9s forwards;
 }
+
+@keyframes startAnimation {
+  from {
+    bottom: -100%;
+    transform: scale(0.9);
+  }
+  to {
+    bottom: 0;
+    transform: scale(0.9);
+  }
+}
+@keyframes MiniMyseAnimation {
+  from {
+    transform: scale(0.9);
+  }
+  to {
+    transform: scale(0.87);
+  }
+}
+@keyframes ScaleAnimation {
+  from {
+    transform: scale(0.87);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+
 
 @media screen and (max-width: 295px) {
 }
