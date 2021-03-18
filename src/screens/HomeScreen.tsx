@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import { FloatButton } from '../components';
+import React, { lazy, useEffect, useState } from 'react';
+import { FloatButton, FloatButtonDevis } from '../components';
 import { Header, Services, Process, Projects, Contact, Footer, LoaderAnimation } from '../scenes';
+const Devis = lazy(() => import('../scenes/devis/Devis'));
 
 const numberDayBeforeCanAgain = 1;
 
@@ -12,6 +13,7 @@ const localStoreKey = {
 function HomeScreen() {
   const [mailHasSent, setMailHasSent] = useState(false);
   const [loadingAnimation, setLoadingAnimation] = useState(false);
+  const [doADevis, setdoADevis] = useState(false);
 
   const handleSendEmail = () => {
     localStorage.setItem(localStoreKey.lastEmailSend, (new Date()).toString());
@@ -47,11 +49,13 @@ function HomeScreen() {
     <>
       {loadingAnimation === false && <LoaderAnimation setLoadingAnimation={handleAnimationIsDone} />}
       <FloatButton initalValue={mailHasSent} />
+      <FloatButtonDevis onClick={() => setdoADevis(true)} />
       <Header />
       <Services />
       <Process />
       <Projects />
       <Contact sendEmail={handleSendEmail} mailHasSent={mailHasSent} />
+      { doADevis && <Devis onClose={() => setdoADevis(false)} />}
       <Footer />
     </>
   );
