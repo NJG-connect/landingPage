@@ -3,14 +3,14 @@
   height: 100vh;
   background-color: white;
   overflow-y: hidden;
-  overflow-x: scroll;
+  /* overflow-x: scroll; */
   display: flex;
   flex-direction: column;
   z-index: 1;
   position: fixed;
   left: 0;
   bottom: 0;
-  animation: startAnimation 0.8s  forwards, MiniMyseAnimation 0.3s 0.7s forwards,  ScaleAnimation 0.5s 0.9s forwards;
+  animation: borderAnimation 4s  forwards,startAnimation 0.8s  forwards, MiniMyseAnimation 0.3s 0.7s forwards,  ScaleAnimation 0.5s 0.9s forwards;
 }
 
 @keyframes startAnimation {
@@ -37,6 +37,14 @@
   }
   to {
     transform: scale(1);
+  }
+}
+@keyframes borderAnimation {
+  from {
+    border: 1px solid black;
+  }
+  to {
+    border: 0px;
   }
 }
 
