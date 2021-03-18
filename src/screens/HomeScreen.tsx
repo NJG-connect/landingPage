@@ -1,7 +1,7 @@
-import React, { lazy, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { FloatButton, FloatButtonDevis } from '../components';
 import { Header, Services, Process, Projects, Contact, Footer, LoaderAnimation } from '../scenes';
-const Devis = lazy(() => import('../scenes/devis/Devis'));
+import Devis from '../scenes/devis/Devis';
 
 const numberDayBeforeCanAgain = 1;
 
