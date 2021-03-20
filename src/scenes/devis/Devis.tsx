@@ -16,6 +16,7 @@ function Devis({ onClose }: Props) {
 
   function selectOption(value: OptionDevisType[]) {
     setoptionDevisSelected(value);
+    console.log(optionDevisSelected);
     setstep(step + 1)
   }
 
