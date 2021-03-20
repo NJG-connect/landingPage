@@ -47,7 +47,6 @@
 .description{
  display: flex; 
  flex: 0.45;
- word-break: break-all ;
  align-items: center;
  justify-content: center;
  text-align: center;
