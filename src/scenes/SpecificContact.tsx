@@ -1,20 +1,18 @@
-import React from 'react';
-import contactImage, { contactImageType } from '../assets/images/contact';
-import { ContactWithSociety } from '../screens/ContactScreen';
+import React from "react";
+import contactImage, { contactImageType } from "../assets/images/contact";
+import { ContactWithSociety } from "../screens/ContactScreen";
 import styles from "./SpecificContact.module.css";
-import ReactGA from 'react-ga';
-var vCardsJS = require('vcards-js');
+import ReactGA from "react-ga";
+var vCardsJS = require("vcards-js");
 
 interface Props {
-  info: ContactWithSociety
+  info: ContactWithSociety;
 }
 
 function SpecificContact({ info }: Props) {
-
   function donwload() {
-
     // GOOGLE ANALYTICS
-    ReactGA.event({ category: 'contact', action: 'Download Contact' })
+    ReactGA.event({ category: "contact", action: "Download Contact" });
 
     // //create a new vCard
     var vCard = vCardsJS();
@@ -26,36 +24,63 @@ function SpecificContact({ info }: Props) {
     vCard.workPhone = info.contact.phone;
     vCard.title = info.contact.role;
     vCard.url = info.society.web;
-    vCard.socialUrls['linkedIn'] = info.contact.linkedIn;
+    vCard.socialUrls["linkedIn"] = info.contact.linkedIn;
 
-    const url = window.URL.createObjectURL(new Blob([vCard.getFormattedString()]));
-    const link = document.createElement('a');
+    const url = window.URL.createObjectURL(
+      new Blob([vCard.getFormattedString()])
+    );
+    const link = document.createElement("a");
     link.href = url;
-    link.setAttribute('download', `vcard_${info.contact.firstname}_${info.contact.lastname}.vcf`);
+    link.setAttribute(
+      "download",
+      `vcard_${info.contact.firstname}_${info.contact.lastname}.vcf`
+    );
     document.body.appendChild(link);
     link.click();
   }
 
-  function onPressOnSocialNetworks(value: 'mail' | 'phone' | 'linkedIn') {
+  function onPressOnSocialNetworks(value: "mail" | "phone" | "linkedIn") {
     // GOOGLE ANALYTICS
-    ReactGA.event({ category: 'contact', action: `click on ${value}` })
+    ReactGA.event({ category: "contact", action: `click on ${value}` });
   }
 
   return (
     <div className={styles.specificContact}>
-      <div className={styles.header} >
+      <div className={styles.header}>
         <div className={styles.headerContent}>
           <div className={styles.headerInfo}>
-            <img src={info.contact.photo} className={styles.avatar} alt="avatar" />
-            <h2>{info.contact.firstname} {info.contact.lastname}</h2>
+            <img
+              src={info.contact.photo}
+              className={styles.avatar}
+              alt="avatar"
+            />
+            <h2>
+              {info.contact.firstname} {info.contact.lastname}
+            </h2>
           </div>
           <div className={styles.headerButton}>
-            <a className={styles.headerButtonContent} href={`tel:${info.contact.phone}`} onClick={() => onPressOnSocialNetworks("phone")}>
-              <img className={styles.headerIcon} alt="Telephone" src={contactImage.call} />
+            <a
+              className={styles.headerButtonContent}
+              href={`tel:${info.contact.phone}`}
+              onClick={() => onPressOnSocialNetworks("phone")}
+            >
+              <img
+                className={styles.headerIcon}
+                alt="Telephone"
+                src={contactImage.call}
+              />
               <p>APPELER</p>
             </a>
-            <a className={styles.headerButtonContent} href={`mailto:${info.contact.email}?subject=Prise de Contact&body=`} onClick={() => onPressOnSocialNetworks("mail")}>
-              <img className={styles.headerIcon} alt="Email" src={contactImage.sendmail} />
+            <a
+              className={styles.headerButtonContent}
+              href={`mailto:${info.contact.email}?subject=Prise de Contact&body=`}
+              onClick={() => onPressOnSocialNetworks("mail")}
+            >
+              <img
+                className={styles.headerIcon}
+                alt="Email"
+                src={contactImage.sendmail}
+              />
               <p>E-EMAIL</p>
             </a>
           </div>
@@ -64,10 +89,27 @@ function SpecificContact({ info }: Props) {
 
       <div className={styles.container}>
         <RowWithIcon title={info.contact.role} />
-        <RowWithIcon title={info.contact.phone} placeholder="Mobile" icon="callGrey" link={`tel:${info.contact.phone}`} onClick={() => onPressOnSocialNetworks("phone")} />
-        <RowWithIcon title={info.contact.email} placeholder="E-mail" icon="mail" link={`mailto:${info.contact.email}?subject=Prise de Contact&body=`} onClick={() => onPressOnSocialNetworks("mail")} />
+        <RowWithIcon
+          title={info.contact.phone}
+          placeholder="Mobile"
+          icon="callGrey"
+          link={`tel:${info.contact.phone}`}
+          onClick={() => onPressOnSocialNetworks("phone")}
+        />
+        <RowWithIcon
+          title={info.contact.email}
+          placeholder="E-mail"
+          icon="mail"
+          link={`mailto:${info.contact.email}?subject=Prise de Contact&body=`}
+          onClick={() => onPressOnSocialNetworks("mail")}
+        />
         <RowWithIcon title={info.society.name} icon="entreprise" />
-        <RowWithIcon title={info.society.web} placeholder="Site Web" icon="web" link={"/"} />
+        <RowWithIcon
+          title={info.society.web}
+          placeholder="Site Web"
+          icon="web"
+          link={"/"}
+        />
 
         <h4>Médias Sociaux</h4>
         <div className={styles.socialMediaContent}>
@@ -78,7 +120,11 @@ function SpecificContact({ info }: Props) {
             rel="noreferrer"
             onClick={() => onPressOnSocialNetworks("linkedIn")}
           >
-            <img src={contactImage.linkedin} className={styles.iconSocial} alt="linkedIn" />
+            <img
+              src={contactImage.linkedin}
+              className={styles.iconSocial}
+              alt="linkedIn"
+            />
           </a>
         </div>
         <button onClick={donwload} className={styles.buttonVCard}>
@@ -86,13 +132,11 @@ function SpecificContact({ info }: Props) {
           <p>Inserer le Contact</p>
         </button>
       </div>
-    </div >
+    </div>
   );
 }
 
 export default SpecificContact;
-
-
 
 interface RowWithIconProps {
   icon?: contactImageType;
@@ -106,14 +150,26 @@ function RowWithIcon(props: RowWithIconProps) {
   return (
     <div className={styles.rowContainer}>
       <div className={styles.iconRow}>
-        {props.icon && <img className={styles.iconSizeRow} src={contactImage[props.icon!]} alt="logoIcon" />}
+        {props.icon && (
+          <img
+            className={styles.iconSizeRow}
+            src={contactImage[props.icon!]}
+            alt="logoIcon"
+          />
+        )}
       </div>
       <div className={styles.contentInfoRow}>
-        <a href={props.link} className={props.link ? styles.link : ''} onClick={props.onClick} >
+        <a
+          href={props.link}
+          className={props.link ? styles.link : ""}
+          onClick={props.onClick}
+        >
           <p>{props.title}</p>
-          {props.placeholder && <p className={styles.placeholderRow}>{props.placeholder}</p>}
+          {props.placeholder && (
+            <p className={styles.placeholderRow}>{props.placeholder}</p>
+          )}
         </a>
       </div>
     </div>
-  )
+  );
 }

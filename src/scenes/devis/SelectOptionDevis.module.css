@@ -51,7 +51,14 @@
 @media screen and (max-width: 700px) {
   .content {
     justify-content: flex-start;
+    padding-right: 15px;
   }
+
+  .content::after {
+    content: "";
+    padding-right: 0.02px;
+  }
+
   .title {
     margin-left: 10px;
   }

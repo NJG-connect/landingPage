@@ -1,14 +1,13 @@
-import React, { useMemo } from 'react';
-import { SpecificContact } from '../scenes';
-import contactsJson from '../utils/contacts.json';
-
+import React, { useMemo } from "react";
+import { SpecificContact } from "../scenes";
+import contactsJson from "../json/contacts.json";
 
 interface Props {
   match: {
     params: {
       id?: string;
-    }
-  }
+    };
+  };
 }
 
 export interface ContactWithSociety {
@@ -25,19 +24,18 @@ export interface ContactWithSociety {
     email: string;
     photo: string;
     linkedIn: string;
-  }
+  };
 }
 
 function ContactScreen({ match }: Props) {
   document.title = "NJG connect - Contact";
   const contact: ContactWithSociety = useMemo(() => {
-    const contactId = match.params.id
-    const contact = contactsJson.contacts.find(contact => contact.urlId === contactId) ||
+    const contactId = match.params.id;
+    const contact =
+      contactsJson.contacts.find((contact) => contact.urlId === contactId) ||
       contactsJson.contacts[0];
     return { society: contactsJson.society, contact };
-  }, [match])
-
-
+  }, [match]);
 
   return (
     <>

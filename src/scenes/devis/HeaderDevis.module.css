@@ -19,8 +19,6 @@
   width: auto;
 }
 
-
-
 .goBackDiv {
   height: 50px;
   height: 50px;
@@ -60,7 +58,7 @@
   justify-content: space-between;
 }
 .timeline {
-  height: 3px;
+  height: 2px;
   align-self: center;
   width: 100%;
   background-color: #707070;
@@ -74,6 +72,7 @@
 .bubbleTimeline {
   z-index: 1;
   height: 90%;
+  width: 36px;
   aspect-ratio: 1;
   border: 1px solid #707070;
   border-radius: 50%;

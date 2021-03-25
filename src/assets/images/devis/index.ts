@@ -11,6 +11,11 @@ import stamp from'./stamp.png';
 import synthese from'./synthese.png';
 import graph from'./graph.png';
 import tel from'./tel.png';
+import tel2 from'./tel2.png';
+import ordi from'./ordi.png';
+import pc from'./pc.png';
+import tab from'./tab.png';
+import approved from'./approved.png';
 
 const imagesDevis =  {
   checkboxValided,
@@ -26,6 +31,11 @@ const imagesDevis =  {
   synthese,
   graph,
   tel,
+  tel2,
+  ordi,
+  pc,
+  tab,
+  approved,
 };
 
 export type ImageDevisType =
@@ -41,6 +51,11 @@ export type ImageDevisType =
 | "stamp"
 | "graph"
 | "tel"
-| "synthese";
+| "synthese"
+| "tel2"
+| "ordi"
+| "pc"
+| "tab"
+| "approved";
 
 export default imagesDevis;

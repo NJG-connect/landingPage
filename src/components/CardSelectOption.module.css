@@ -13,54 +13,51 @@
 }
 
 .card:last-child {
-  /* margin-right: 20px; */
+  margin-right: 20px;
 }
 
 .header {
-  display: flex; 
+  display: flex;
   flex: 0.25;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
 }
 
-
-.title{
+.title {
   font-family: Montserrat-semiBold;
 }
 
-.checkbox{
- display: flex; 
- width: 30px;
- height: auto;
+.checkbox {
+  display: flex;
+  width: 30px;
+  height: auto;
 }
 
-
-.separator{
- width: 100px;
- height: 5px;
- margin-left: 20px;
- border-radius: 6px;
- background: #656CFF;
+.separator {
+  width: 100px;
+  height: 5px;
+  margin-left: 20px;
+  border-radius: 6px;
+  background: #656cff;
 }
 
-.description{
- display: flex; 
- flex: 0.45;
- align-items: center;
- justify-content: center;
- text-align: center;
- font-size: 12.5px;
+.description {
+  display: flex;
+  flex: 0.45;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 12.5px;
 }
 
-.logoPart{
- display: flex; 
- flex: 0.3;
- flex-direction: row;
- align-items: center;
- justify-content: space-evenly;
+.logoPart {
+  display: flex;
+  flex: 0.3;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
 }
-
 
 .divImageForm {
   height: 45px;
@@ -68,7 +65,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 3px solid #656CFF;
+  border: 3px solid #656cff;
   border-radius: 50%;
 }
 

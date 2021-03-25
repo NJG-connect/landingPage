@@ -4,7 +4,7 @@ import images from "../assets/images";
 import { TextInput } from "../components";
 import { ToastContext } from "../contexts/ToastContext";
 import styles from "./Contact.module.css";
-import ReactGA from 'react-ga';
+import ReactGA from "react-ga";
 
 interface Props {
   sendEmail: () => void;
@@ -17,7 +17,7 @@ const initialUserValue = {
   name: undefined,
   society: undefined,
   contact: undefined,
-}
+};
 
 function Contact(props: Props) {
   const { show } = useContext(ToastContext);
@@ -29,24 +29,31 @@ function Contact(props: Props) {
 
   const handleSendEmail = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    if (Object.entries(infoUser).every(([key, value]) => !!value || key === "society") && !props.mailHasSent) {
-      setInfoUser(initialUserValue)
+    if (
+      Object.entries(infoUser).every(
+        ([key, value]) => !!value || key === "society"
+      ) &&
+      !props.mailHasSent
+    ) {
+      setInfoUser(initialUserValue);
       await sendEmail(infoUser);
       props.sendEmail();
 
       // GOOGLE ANALYTICS
-      ReactGA.event({ category: 'send', action: 'send email' })
+      ReactGA.event({ category: "send", action: "send email" });
 
       show({ message: "l'email a bien été envoyé" });
       return false;
     } else {
-
       // GOOGLE ANALYTICS
-      ReactGA.event({ category: 'send', action: 'want send mail before the deadline' })
+      ReactGA.event({
+        category: "send",
+        action: "want send mail before the deadline",
+      });
 
       show({ message: "Votre message a déjà été transmis" });
     }
-  }
+  };
 
   return (
     <div id="contact" className={styles.contact}>
@@ -67,7 +74,11 @@ function Contact(props: Props) {
             <p className={styles.separatorText}>ou</p>
           </div>
           <div className={styles.rightContent}>
-            <form method="post" onSubmit={(e) => handleSendEmail(e)} className={styles.form}>
+            <form
+              method="post"
+              onSubmit={(e) => handleSendEmail(e)}
+              className={styles.form}
+            >
               <TextInput
                 value={infoUser.name}
                 onChange={(name: string) => setInfoUser({ ...infoUser, name })}
@@ -89,7 +100,7 @@ function Contact(props: Props) {
                 }
                 label="Mail / Tel"
               />
-              <button type="submit" className={styles.button} >
+              <button type="submit" className={styles.button}>
                 <p>Entrer en contact</p>
               </button>
             </form>
