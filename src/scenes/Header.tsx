@@ -1,5 +1,5 @@
-import React from 'react';
-import images from '../assets/images';
+import React from "react";
+import images from "../assets/images";
 import styles from "./Header.module.css";
 
 function Header() {
@@ -12,11 +12,15 @@ function Header() {
           <img src={images.logo} className={styles.logoImage} alt="Logo" />
         </div>
         <div>
-          <p className={styles.subtile}>L'AGENCE DIGITALE QUI</p>
-          <p className={styles.subtile}>VOUS CONNECTE Á VOTRE AVENIR</p>
+          <h1 className={styles.subtile}>L'AGENCE DIGITALE QUI</h1>
+          <h1 className={styles.subtile}>VOUS CONNECTE Á VOTRE AVENIR</h1>
         </div>
         <div className={styles.thirdContent}>
-          <img src={images.mobile} className={styles.platformImageMobile} alt="mobile" />
+          <img
+            src={images.mobile}
+            className={styles.platformImageMobile}
+            alt="mobile"
+          />
           <div>
             <p className={styles.text}>Android</p>
             <p className={styles.text}>IOS</p>
@@ -31,7 +35,7 @@ function Header() {
         <img src={images.waveTop} className={styles.waveImage} alt="wave" />
         <div className={styles.waveBackground} />
       </div>
-    </div >
+    </div>
   );
 }
 
