@@ -36,7 +36,7 @@ function Contact(props: Props) {
       !props.mailHasSent
     ) {
       setInfoUser(initialUserValue);
-      await sendEmail(infoUser);
+      await sendEmail(infoUser, "makingContact");
       props.sendEmail();
 
       // GOOGLE ANALYTICS

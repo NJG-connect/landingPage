@@ -1,11 +1,11 @@
 const BASE_URL = 'https://api.emailjs.com/api/v1.0/email/send' ; 
 
-const sendEmail = async (body: {[value:string] : string| undefined})=>{
-const {REACT_APP_EMAILSJS_SERVICE_ID, REACT_APP_EMAILSJS_TEMPLATE_ID ,REACT_APP_EMAILJS_USER_ID} = process.env
+const sendEmail = async (body: {[value:string] : string| undefined| any}, template: 'devis' | 'makingContact')=>{
+const {REACT_APP_EMAILSJS_SERVICE_ID, REACT_APP_EMAILSJS_TEMPLATE_ID ,REACT_APP_EMAILJS_USER_ID, REACT_APP_EMAILSJS_TEMPLATE_DEVIS_ID} = process.env
 
  const  data = {
     service_id: REACT_APP_EMAILSJS_SERVICE_ID,
-    template_id: REACT_APP_EMAILSJS_TEMPLATE_ID,
+    template_id: template === "makingContact" ? REACT_APP_EMAILSJS_TEMPLATE_ID : REACT_APP_EMAILSJS_TEMPLATE_DEVIS_ID,
     user_id: REACT_APP_EMAILJS_USER_ID,
     template_params: {
       ...body

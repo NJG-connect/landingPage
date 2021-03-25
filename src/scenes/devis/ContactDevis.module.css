@@ -1,7 +1,6 @@
 .contact {
   display: flex;
   flex: 1;
-  /* background-color: antiquewhite; */
   align-items: center;
   justify-content: center;
   flex-direction: column;
@@ -19,7 +18,6 @@
   display: flex;
   flex-direction: column;
   flex: 0.5;
-  /* background-color: aquamarine; */
   align-items: center;
   justify-content: center;
   padding-top: 40px;
@@ -33,7 +31,6 @@
   padding-right: 20px;
   flex: 0.5;
   position: relative;
-  /* background-color: aqua; */
 }
 
 .imageStamp {
@@ -91,7 +88,6 @@
   right: 25px;
   top: 60px;
   border-radius: 5px;
-  /* background-color: #ef8080; */
   display: flex;
 }
 

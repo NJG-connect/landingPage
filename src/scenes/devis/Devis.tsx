@@ -3,11 +3,14 @@ import { OptionDevisType } from "../../types/Devis";
 import styles from "./Devis.module.css";
 import SelectProjectDevis from "./SelectProjectDevis";
 import ContactDevis from "./ContactDevis";
+import ReactGA from "react-ga";
+import sendEmail from "../../api/sendEmail";
 
 const HeaderDevis = lazy(() => import("./HeaderDevis"));
 const SelectOptionDevis = lazy(() => import("./SelectOptionDevis"));
 interface Props {
   onClose: () => void;
+  sendEmail: () => void;
 }
 export interface AnswersType {
   project: string[];
@@ -39,7 +42,7 @@ const initalContact: ContactDevisType = {
   mail: "",
 };
 
-function Devis({ onClose }: Props) {
+function Devis({ onClose, sendEmail: sendEmailProps }: Props) {
   const [step, setstep] = useState(0);
   const [optionDevisSelected, setoptionDevisSelected] = useState<
     OptionDevisType[]
@@ -59,9 +62,23 @@ function Devis({ onClose }: Props) {
     setprojectDevisSelected(value);
     setstep(step + 1);
   }
-  function handleSubmit(value: ContactDevisType) {
+  async function handleSubmit(value: ContactDevisType) {
     setcontactDevis(value);
-    onClose();
+    const newUserInfo = {
+      ...projectDevisSelected,
+      ...value,
+      type: optionDevisSelected,
+    };
+    // GOOGLE ANALYTICS
+    ReactGA.event({ category: "send", action: "send devis" });
+    await sendEmail(newUserInfo, "devis");
+
+    // CREATE TIMESTAMP SEND EMAIL
+    sendEmailProps();
+    const timer = setTimeout(() => {
+      onClose();
+    }, 2000);
+    return () => clearTimeout(timer);
   }
 
   return (

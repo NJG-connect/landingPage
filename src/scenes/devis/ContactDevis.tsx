@@ -14,7 +14,7 @@ function ContactDevis({ onSubmit, initialValue }: Props) {
   const [isSend, setisSend] = useState(false);
   function handleSubmit() {
     setisSend(true);
-    // onSubmit(infoUser);
+    onSubmit(infoUser);
   }
 
   return (
