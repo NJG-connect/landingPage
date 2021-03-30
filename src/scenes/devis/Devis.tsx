@@ -1,4 +1,4 @@
-import React, { lazy, useState } from "react";
+import React, { lazy, useEffect, useState } from "react";
 import { OptionDevisType } from "../../types/Devis";
 import styles from "./Devis.module.css";
 import SelectProjectDevis from "./SelectProjectDevis";
@@ -53,6 +53,10 @@ function Devis({ onClose, sendEmail: sendEmailProps }: Props) {
   const [contactDevis, setcontactDevis] = useState<ContactDevisType>(
     initalContact
   );
+
+  useEffect(() => {
+    ReactGA.event({ category: "access", action: "Access devis" });
+  }, []);
 
   function selectOption(value: OptionDevisType[]) {
     setoptionDevisSelected(value);
