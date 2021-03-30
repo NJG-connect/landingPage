@@ -114,6 +114,15 @@
   opacity: 1;
 }
 
+.isSending {
+  background-color: #707070;
+  cursor: progress;
+}
+
+.isSending :hover {
+  cursor: progress;
+}
+
 @media screen and (max-width: 702px) {
   .content {
     border: 0;

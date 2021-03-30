@@ -3,7 +3,7 @@ import { OptionDevisType } from "../../types/Devis";
 import styles from "./Devis.module.css";
 import SelectProjectDevis from "./SelectProjectDevis";
 import ContactDevis from "./ContactDevis";
-import ReactGA from "react-ga";
+import ReactGA, { set } from "react-ga";
 import sendEmail from "../../api/sendEmail";
 
 const HeaderDevis = lazy(() => import("./HeaderDevis"));
@@ -53,6 +53,7 @@ function Devis({ onClose, sendEmail: sendEmailProps }: Props) {
   const [contactDevis, setcontactDevis] = useState<ContactDevisType>(
     initalContact
   );
+  const [isSending, setIsSending] = useState(false);
 
   useEffect(() => {
     ReactGA.event({ category: "access", action: "Access devis" });
@@ -67,6 +68,7 @@ function Devis({ onClose, sendEmail: sendEmailProps }: Props) {
     setstep(step + 1);
   }
   async function handleSubmit(value: ContactDevisType) {
+    setIsSending(true);
     setcontactDevis(value);
     const newUserInfo = {
       ...projectDevisSelected,
@@ -80,6 +82,7 @@ function Devis({ onClose, sendEmail: sendEmailProps }: Props) {
     // CREATE TIMESTAMP SEND EMAIL
     sendEmailProps();
     const timer = setTimeout(() => {
+      setIsSending(false);
       onClose();
     }, 2000);
     return () => clearTimeout(timer);
@@ -112,7 +115,11 @@ function Devis({ onClose, sendEmail: sendEmailProps }: Props) {
           />
         )}
         {step === 2 && (
-          <ContactDevis onSubmit={handleSubmit} initialValue={contactDevis} />
+          <ContactDevis
+            onSubmit={handleSubmit}
+            initialValue={contactDevis}
+            isSending={isSending}
+          />
         )}
       </div>
     </div>

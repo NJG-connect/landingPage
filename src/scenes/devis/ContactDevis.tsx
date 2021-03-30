@@ -7,9 +7,10 @@ import { ContactDevisType } from "./Devis";
 interface Props {
   onSubmit: (value: ContactDevisType) => void;
   initialValue: ContactDevisType;
+  isSending: boolean;
 }
 
-function ContactDevis({ onSubmit, initialValue }: Props) {
+function ContactDevis({ onSubmit, initialValue, isSending }: Props) {
   const [infoUser, setInfoUser] = useState(initialValue);
   const [isSend, setisSend] = useState(false);
   function handleSubmit() {
@@ -66,7 +67,10 @@ function ContactDevis({ onSubmit, initialValue }: Props) {
         </div>
       </div>
       <div className={styles.submit}>
-        <div onClick={handleSubmit} className={styles.button}>
+        <div
+          onClick={() => !isSending && handleSubmit()}
+          className={`${styles.button}  ${isSending ? styles.isSending : ""}`}
+        >
           <p>Envoyé</p>
         </div>
       </div>
