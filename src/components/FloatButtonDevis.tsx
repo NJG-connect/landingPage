@@ -1,6 +1,6 @@
-import React, { useCallback, useEffect, useMemo, useState } from 'react';
-import images from '../assets/images';
-import styles from './FloatButtonDevis.module.css';
+import React, { useCallback, useEffect, useMemo, useState } from "react";
+import images from "../assets/images";
+import styles from "./FloatButtonDevis.module.css";
 import ContentIsVisible from "../hooks/useElementIsVisible";
 
 interface Props {
@@ -17,10 +17,9 @@ function FloatButtonDevis({ onClick }: Props) {
     }
   }, [contentIsOpen, visible]);
 
-
   useEffect(() => {
-    document.getElementById("root")!.addEventListener("scroll", () => handleScroll());
-    return () => document.getElementById("root")!.removeEventListener("scroll", () => { });
+    document.body.addEventListener("scroll", () => handleScroll());
+    return () => document.body.removeEventListener("scroll", () => {});
   }, [handleScroll]);
 
   const finishContentIsOpen = useMemo(() => {
@@ -28,24 +27,35 @@ function FloatButtonDevis({ onClick }: Props) {
       return true;
     }
     if (visible && contentIsOpen === false) {
-      return true
+      return true;
     }
-    return false
-  }, [contentIsOpen, visible])
+    return false;
+  }, [contentIsOpen, visible]);
 
   const openContent = useCallback(() => {
     finishContentIsOpen ? onClick() : setContentIsOpen(true);
   }, [finishContentIsOpen, onClick]);
 
   return (
-    <div className={`${styles.bubble} ${finishContentIsOpen ? styles.contentIsOpen : styles.contentIsClose}`} onClick={openContent}>
-      <img src={images.devis} alt="devis" className={`${styles.image} ${finishContentIsOpen ? styles.ImageIsOpen : styles.ImageIsClose}`} />
+    <div
+      className={`${styles.bubble} ${
+        finishContentIsOpen ? styles.contentIsOpen : styles.contentIsClose
+      }`}
+      onClick={openContent}
+    >
+      <img
+        src={images.devis}
+        alt="devis"
+        className={`${styles.image} ${
+          finishContentIsOpen ? styles.ImageIsOpen : styles.ImageIsClose
+        }`}
+      />
       <div>
         <p className={styles.title}>Devis</p>
         <p className={styles.subtitle}>Déposer ma demande</p>
       </div>
     </div>
-  )
+  );
 }
 
-export default FloatButtonDevis
+export default FloatButtonDevis;
