@@ -1,6 +1,5 @@
 .devis {
   width: 100vw;
-  height: 100vh;
   background-color: white;
   overflow-y: scroll;
   overflow-x: hidden;
@@ -59,5 +58,8 @@
   }
 }
 
-@media screen and (max-width: 295px) {
+@media screen and (max-width: 550px) {
+  .contentForOptionDevis {
+    display: initial;
+  }
 }

@@ -83,7 +83,11 @@ function Devis({ onClose, sendEmail: sendEmailProps }: Props) {
 
   return (
     <div className={styles.devis} id="devis">
-      <div className={styles.content}>
+      <div
+        className={`${styles.content} ${
+          step !== 0 ? styles.contentForOptionDevis : ""
+        } `}
+      >
         <HeaderDevis
           onClose={onClose}
           step={step}
