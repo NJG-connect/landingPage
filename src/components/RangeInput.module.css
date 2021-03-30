@@ -7,7 +7,7 @@
 
 .slider {
   width: 85%;
-  height: 22px;
+  height: 40px;
   align-self: center;
   z-index: 1;
   margin: 0;
@@ -33,7 +33,7 @@
   flex-direction: row;
   justify-content: space-between;
   position: absolute;
-  top: 7%;
+  top: 20.5%;
   left: auto;
   right: auto;
   z-index: 0;

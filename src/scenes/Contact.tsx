@@ -78,6 +78,7 @@ function Contact(props: Props) {
               method="post"
               onSubmit={(e) => handleSendEmail(e)}
               className={styles.form}
+              autoComplete="on"
             >
               <TextInput
                 value={infoUser.name}
