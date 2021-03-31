@@ -71,7 +71,7 @@ function ContactDevis({ onSubmit, initialValue, isSending }: Props) {
           onClick={() => !isSending && handleSubmit()}
           className={`${styles.button}  ${isSending ? styles.isSending : ""}`}
         >
-          <p>Envoyé</p>
+          <p>Envoyer</p>
         </div>
       </div>
     </div>

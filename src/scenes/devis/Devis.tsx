@@ -3,7 +3,7 @@ import { OptionDevisType } from "../../types/Devis";
 import styles from "./Devis.module.css";
 import SelectProjectDevis from "./SelectProjectDevis";
 import ContactDevis from "./ContactDevis";
-import ReactGA, { set } from "react-ga";
+import ReactGA from "react-ga";
 import sendEmail from "../../api/sendEmail";
 
 const HeaderDevis = lazy(() => import("./HeaderDevis"));
