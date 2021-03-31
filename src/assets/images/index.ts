@@ -17,6 +17,8 @@ import processMobile from'./processMobile.svg';
 import processTablet from'./processTablet.svg';
 import icon from'./icon.svg';
 import mailSend from'./mailSend.png';
+import close from'./close.png';
+import devis from'./devis.png';
 
 const images =  {
   logo,
@@ -38,6 +40,8 @@ const images =  {
   processTablet,
   icon,
   mailSend,
+  close,
+  devis,
 };
 
 export type ImageType =
@@ -60,6 +64,8 @@ export type ImageType =
 | "processWeb"
 | "processTablet"
 | "icon"
-| "mailSend";
+| "mailSend"
+| "close"
+| "devis";
 
 export default images;

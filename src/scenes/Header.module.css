@@ -25,6 +25,7 @@
 
 .logoImage {
   width: 80vmin;
+  height: auto;
   pointer-events: none;
   align-self: center;
 }
@@ -49,6 +50,7 @@
   top: 25%;
   right: -3vw;
   width: 20vw;
+  height: auto;
 }
 
 .tiles {
@@ -57,6 +59,7 @@
   top: 55%;
   left: -5vw;
   width: 17vw;
+  height: auto;
 }
 
 .thirdContent {
@@ -127,6 +130,7 @@
   }
   .waveImage {
     width: 100vw;
+    height: auto;
     margin: 0;
   }
   .waveBackground {

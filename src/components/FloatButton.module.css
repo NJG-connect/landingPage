@@ -1,11 +1,11 @@
 .bubble {
   background-color: white;
-  z-index: 100;
+  z-index: 1;
   position: fixed;
   left: auto;
   top: auto;
   right: 20px;
-  bottom: 20px;
+  bottom: 130px;
   height: 50px;
   width: 50px;
   border-radius: 50%;
@@ -23,6 +23,7 @@
 
 .image {
   height: 40px;
+  width: auto;
   align-self: center;
 }
 

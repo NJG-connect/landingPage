@@ -30,6 +30,11 @@
   position: absolute;
 }
 
+.img {
+  height: 100%;
+  width: 100%;
+}
+
 .desc {
   color: #fff;
   margin-right: 10px;
