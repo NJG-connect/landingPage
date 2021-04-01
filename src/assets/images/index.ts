@@ -19,6 +19,10 @@ import icon from'./icon.svg';
 import mailSend from'./mailSend.png';
 import close from'./close.png';
 import devis from'./devis.png';
+import linkedin from'./linkedin.png';
+import google from'./google.png';
+import contact from'./contact.png';
+import cgu from'./cgu.png';
 
 const images =  {
   logo,
@@ -42,6 +46,10 @@ const images =  {
   mailSend,
   close,
   devis,
+  linkedin,
+  google,
+  contact,
+  cgu,
 };
 
 export type ImageType =
@@ -66,6 +74,10 @@ export type ImageType =
 | "icon"
 | "mailSend"
 | "close"
-| "devis";
+| "devis"
+|"linkedin"
+|"google"
+|"contact"
+|"cgu";
 
 export default images;
