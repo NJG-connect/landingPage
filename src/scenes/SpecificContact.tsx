@@ -2,7 +2,6 @@ import React from "react";
 import contactImage, { contactImageType } from "../assets/images/contact";
 import { ContactWithSociety } from "../screens/ContactScreen";
 import styles from "./SpecificContact.module.css";
-import ReactGA from "react-ga";
 var vCardsJS = require("vcards-js");
 
 interface Props {
@@ -12,7 +11,12 @@ interface Props {
 function SpecificContact({ info }: Props) {
   function donwload() {
     // GOOGLE ANALYTICS
-    ReactGA.event({ category: "contact", action: "Download Contact" });
+    import("../utils/reactAnalytics").then(({ createEventGA }) => {
+      createEventGA({
+        category: "contact",
+        action: "Download Contact",
+      });
+    });
 
     // //create a new vCard
     var vCard = vCardsJS();
@@ -41,7 +45,12 @@ function SpecificContact({ info }: Props) {
 
   function onPressOnSocialNetworks(value: "mail" | "phone" | "linkedIn") {
     // GOOGLE ANALYTICS
-    ReactGA.event({ category: "contact", action: `click on ${value}` });
+    import("../utils/reactAnalytics").then(({ createEventGA }) => {
+      createEventGA({
+        category: "contact",
+        action: `click on ${value}`,
+      });
+    });
   }
 
   return (

@@ -3,6 +3,7 @@ import TextInput from './TextInput';
 import FloatButton from './FloatButton';
 import Toast from './Toast';
 import FloatButtonDevis from './FloatButtonDevis';
+import CookiesToaster from './CookiesToaster';
 
 export {
   FlipCard,
@@ -10,4 +11,5 @@ export {
   FloatButton,
   Toast,
   FloatButtonDevis,
+  CookiesToaster,
 };

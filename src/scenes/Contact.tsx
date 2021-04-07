@@ -4,7 +4,6 @@ import images from "../assets/images";
 import { TextInput } from "../components";
 import { ToastContext } from "../contexts/ToastContext";
 import styles from "./Contact.module.css";
-import ReactGA from "react-ga";
 
 interface Props {
   sendEmail: () => void;
@@ -40,17 +39,23 @@ function Contact(props: Props) {
       props.sendEmail();
 
       // GOOGLE ANALYTICS
-      ReactGA.event({ category: "send", action: "send email" });
+      import("../utils/reactAnalytics").then(({ createEventGA }) => {
+        createEventGA({
+          category: "send",
+          action: "send email",
+        });
+      });
 
       show({ message: "l'email a bien été envoyé" });
       return false;
     } else {
       // GOOGLE ANALYTICS
-      ReactGA.event({
-        category: "send",
-        action: "want send mail before the deadline",
+      import("../utils/reactAnalytics").then(({ createEventGA }) => {
+        createEventGA({
+          category: "send",
+          action: "want send mail before the deadline",
+        });
       });
-
       show({ message: "Votre message a déjà été transmis" });
     }
   };
