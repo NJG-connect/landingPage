@@ -5,7 +5,6 @@ import { useGesture } from "react-use-gesture";
 import projectsImage, { projectsImageType } from "../assets/images/projects";
 import ContentIsVisible from "../hooks/useElementIsVisible";
 import projectsJson from "../json/projects.json";
-import ReactGA from "react-ga";
 
 const formatCards = projectsJson.map((el, index) => ({
   ...el,
@@ -75,8 +74,12 @@ function Projects() {
         if (isGone) {
           if (index === currentCard) {
             // GOOGLE ANALYTICS
-            ReactGA.event({ category: "swipe", action: "swipe Card" });
-
+            import("../utils/reactAnalytics").then(({ createEventGA }) => {
+              createEventGA({
+                category: "swipe",
+                action: "swipe Card",
+              });
+            });
             if (index === 0) {
               setCurrentCard(cards.length - 1);
               setActiveAnimation(0);

@@ -3,7 +3,6 @@ import { OptionDevisType } from "../../types/Devis";
 import styles from "./Devis.module.css";
 import SelectProjectDevis from "./SelectProjectDevis";
 import ContactDevis from "./ContactDevis";
-import ReactGA from "react-ga";
 import sendEmail from "../../api/sendEmail";
 
 const HeaderDevis = lazy(() => import("./HeaderDevis"));
@@ -56,7 +55,12 @@ function Devis({ onClose, sendEmail: sendEmailProps }: Props) {
   const [isSending, setIsSending] = useState(false);
 
   useEffect(() => {
-    ReactGA.event({ category: "access", action: "Access devis" });
+    import("../../utils/reactAnalytics").then(({ createEventGA }) => {
+      createEventGA({
+        category: "access",
+        action: "Access devis",
+      });
+    });
   }, []);
 
   function selectOption(value: OptionDevisType[]) {
@@ -76,7 +80,12 @@ function Devis({ onClose, sendEmail: sendEmailProps }: Props) {
       type: optionDevisSelected,
     };
     // GOOGLE ANALYTICS
-    ReactGA.event({ category: "send", action: "send devis" });
+    import("../../utils/reactAnalytics").then(({ createEventGA }) => {
+      createEventGA({
+        category: "access",
+        action: "send devis",
+      });
+    });
     await sendEmail(newUserInfo, "devis");
 
     // CREATE TIMESTAMP SEND EMAIL

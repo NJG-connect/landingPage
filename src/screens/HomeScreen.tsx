@@ -1,6 +1,7 @@
-import React, { useContext, useEffect, useState } from "react";
-import { FloatButton, FloatButtonDevis } from "../components";
+import React, { useCallback, useContext, useEffect, useState } from "react";
+import { FloatButton, FloatButtonDevis, CookiesToaster } from "../components";
 import { ToastContext } from "../contexts/ToastContext";
+import { UserInfoContext } from "../contexts/UserInfoContext";
 import {
   Header,
   Services,
@@ -14,25 +15,21 @@ import Devis from "../scenes/devis/Devis";
 
 const numberDayBeforeCanAgain = 1;
 
-const localStoreKey = {
-  lastEmailSend: "lastEmailSend",
-  newUser: "newUser",
-};
-
 function HomeScreen() {
   const { show } = useContext(ToastContext);
+  const { userContext, setUserContext } = useContext(UserInfoContext);
   const [mailHasSent, setMailHasSent] = useState(false);
   const [loadingAnimation, setLoadingAnimation] = useState(false);
   const [doADevis, setdoADevis] = useState(false);
 
   const handleSendEmail = () => {
-    localStorage.setItem(localStoreKey.lastEmailSend, new Date().toString());
+    setUserContext({ ...userContext, lastEmailSend: new Date().toString() });
     setMailHasSent(true);
   };
 
   // if user its new for do the animation
   useEffect(() => {
-    const newUserString = localStorage.getItem(localStoreKey.newUser);
+    const newUserString = userContext.newUser;
     if (!!newUserString) {
       const newUser = new Date(Date.parse(newUserString));
       const diffDaysForNewUserAnimation: number = parseInt(
@@ -44,13 +41,11 @@ function HomeScreen() {
         diffDaysForNewUserAnimation < numberDayBeforeCanAgain
       );
     }
-  }, []);
+  }, [userContext.newUser]);
 
   // if user can send again mail
   useEffect(() => {
-    const lastEmailSendString = localStorage.getItem(
-      localStoreKey.lastEmailSend
-    );
+    const lastEmailSendString = userContext.lastEmailSend;
     if (!!lastEmailSendString) {
       const lastEmailSend = new Date(Date.parse(lastEmailSendString));
       const diffDays: number = parseInt(
@@ -60,20 +55,31 @@ function HomeScreen() {
       );
       setMailHasSent(diffDays < numberDayBeforeCanAgain);
     }
-  }, []);
+  }, [userContext.lastEmailSend]);
 
   const handleAnimationIsDone = () => {
     setLoadingAnimation(true);
-    localStorage.setItem(localStoreKey.newUser, new Date().toString());
   };
 
-  function editADevis() {
+  const editADevis = useCallback(() => {
     if (!mailHasSent) {
       setdoADevis(true);
     } else {
       show({ message: "Votre message a déjà été transmis" });
     }
-  }
+  }, [mailHasSent, show]);
+
+  const onAcceptCGU = useCallback(() => {
+    setUserContext({
+      ...userContext,
+      acceptCGU: true,
+      newUser: new Date().toString(),
+    });
+  }, [setUserContext, userContext]);
+
+  const onDecline = useCallback(() => {
+    setUserContext({ ...userContext, acceptCGU: false });
+  }, [setUserContext, userContext]);
 
   return (
     <>
@@ -82,6 +88,9 @@ function HomeScreen() {
       )}
       <FloatButton initalValue={mailHasSent} />
       <FloatButtonDevis onClick={editADevis} />
+      {userContext.acceptCGU === undefined && (
+        <CookiesToaster onAccept={onAcceptCGU} onDecline={onDecline} />
+      )}
       <Header />
       <Services />
       <Process />
