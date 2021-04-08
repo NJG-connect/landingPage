@@ -10,6 +10,7 @@ import { UserInfoType } from "./types/UserInfoContext";
 
 const HomeScreen = lazy(() => import("./screens/HomeScreen"));
 const ContactScreen = lazy(() => import("./screens/ContactScreen"));
+// const CguScreen = lazy(() => import("./screens/CguScreen"));
 
 smoothscroll.polyfill();
 
@@ -56,15 +57,16 @@ function App() {
       <Toast />
       <Router>
         <Suspense fallback={<Loading />}>
-          <Switch>
-            <UserInfoContext.Provider
-              value={{ userContext, setUserContext: handleUserContext }}
-            >
+          <UserInfoContext.Provider
+            value={{ userContext, setUserContext: handleUserContext }}
+          >
+            <Switch>
               <Route path="/contact/:id" component={ContactScreen} />
               <Route path="/contact" component={ContactScreen} />
+              {/* <Route path="/cgu" component={CguScreen} /> */}
               <Route path="/" component={HomeScreen} />
-            </UserInfoContext.Provider>
-          </Switch>
+            </Switch>
+          </UserInfoContext.Provider>
         </Suspense>
       </Router>
     </ToastProvider>
