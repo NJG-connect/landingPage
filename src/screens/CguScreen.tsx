@@ -1,11 +1,6 @@
-import { Footer } from "../scenes";
-
+import Cgu from "../scenes/Cgu";
 function CguScreen() {
-  return (
-    <div>
-      <Footer />
-    </div>
-  );
+  return <Cgu />;
 }
 
 export default CguScreen;
