@@ -21,12 +21,12 @@
   margin-right: 15px;
 }
 
-img,
-img:hover {
+.img,
+.img:hover {
   cursor: pointer;
 }
 
-a:last-child > .img {
+.link:last-child > .img {
   margin-right: 0px;
 }
 

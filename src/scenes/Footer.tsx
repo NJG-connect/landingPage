@@ -20,7 +20,13 @@ function Footer() {
     <footer className={styles.footer}>
       <div>
         {footerOption.map((el, index) => (
-          <a href={el.link} target="_blank" rel="noreferrer" key={index}>
+          <a
+            href={el.link}
+            target="_blank"
+            rel="noreferrer"
+            key={index}
+            className={styles.link}
+          >
             <img src={images[el.image]} className={styles.img} alt={el.image} />
           </a>
         ))}
