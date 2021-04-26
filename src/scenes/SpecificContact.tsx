@@ -2,6 +2,7 @@ import React from "react";
 import contactImage, { contactImageType } from "../assets/images/contact";
 import { ContactWithSociety } from "../screens/ContactScreen";
 import styles from "./SpecificContact.module.css";
+import Pdf from "../data/plaquette.pdf";
 var vCardsJS = require("vcards-js");
 
 interface Props {
@@ -43,7 +44,9 @@ function SpecificContact({ info }: Props) {
     link.click();
   }
 
-  function onPressOnSocialNetworks(value: "mail" | "phone" | "linkedIn") {
+  function onPressOnSocialNetworks(
+    value: "mail" | "phone" | "linkedIn" | "pdf"
+  ) {
     // GOOGLE ANALYTICS
     import("../utils/reactAnalytics").then(({ createEventGA }) => {
       createEventGA({
@@ -114,6 +117,13 @@ function SpecificContact({ info }: Props) {
         />
         <RowWithIcon title={info.society.name} icon="entreprise" />
         <RowWithIcon
+          title="Consulter la plaquette"
+          icon="brochure"
+          link={Pdf}
+          onClick={() => onPressOnSocialNetworks("pdf")}
+          newTab
+        />
+        <RowWithIcon
           title={info.society.web}
           placeholder="Site Web"
           icon="web"
@@ -153,6 +163,7 @@ interface RowWithIconProps {
   placeholder?: string;
   link?: string;
   onClick?: () => void;
+  newTab?: boolean;
 }
 
 function RowWithIcon(props: RowWithIconProps) {
@@ -172,6 +183,8 @@ function RowWithIcon(props: RowWithIconProps) {
           href={props.link}
           className={props.link ? styles.link : ""}
           onClick={props.onClick}
+          target={props.newTab ? "_blank" : ""}
+          rel="noreferrer"
         >
           <p>{props.title}</p>
           {props.placeholder && (

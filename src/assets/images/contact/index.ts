@@ -7,6 +7,7 @@ import web from './web.png';
 import mail from './mail.png';
 import sendmail from './sendmail.png';
 import linkedin from './linkedin.png';
+import brochure from './brochure.png';
 
 const contactImage ={
   entreprise,
@@ -17,6 +18,7 @@ const contactImage ={
   mail,
   sendmail,
   linkedin,
+  brochure,
 };
 
 export type contactImageType =
@@ -27,7 +29,8 @@ export type contactImageType =
  | 'web'
  | 'mail'
  | 'linkedin'
- | 'sendmail';
+ | 'sendmail'
+ | 'brochure';
 
 
 export default contactImage;

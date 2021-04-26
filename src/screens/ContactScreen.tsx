@@ -1,6 +1,6 @@
 import React, { useMemo } from "react";
 import { SpecificContact } from "../scenes";
-import contactsJson from "../json/contacts.json";
+import contactsJson from "../data/contacts.json";
 
 interface Props {
   match: {
