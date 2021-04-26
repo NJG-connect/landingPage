@@ -118,7 +118,7 @@ function SpecificContact({ info }: Props) {
         <RowWithIcon
           title="Consulter la plaquette"
           icon="brochure"
-          link={`${process.env.PUBLIC_URL}/docs/plaquette.pdf`}
+          link={`${process.env.PUBLIC_URL}/docs/plaquette.njgconnect.pdf`}
           onClick={() => onPressOnSocialNetworks("pdf")}
           newTab
         />

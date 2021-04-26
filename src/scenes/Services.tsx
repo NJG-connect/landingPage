@@ -25,7 +25,7 @@ function Services() {
           ...el,
           link:
             el.link === "pdf-link"
-              ? `${process.env.PUBLIC_URL}/docs/plaquette.pdf`
+              ? `${process.env.PUBLIC_URL}/docs/plaquette.njgconnect.pdf`
               : el.link,
         }))
       : [],
