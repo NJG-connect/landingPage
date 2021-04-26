@@ -2,7 +2,6 @@ import React from "react";
 import contactImage, { contactImageType } from "../assets/images/contact";
 import { ContactWithSociety } from "../screens/ContactScreen";
 import styles from "./SpecificContact.module.css";
-import Pdf from "../data/plaquette.pdf";
 var vCardsJS = require("vcards-js");
 
 interface Props {
@@ -119,7 +118,7 @@ function SpecificContact({ info }: Props) {
         <RowWithIcon
           title="Consulter la plaquette"
           icon="brochure"
-          link={Pdf}
+          link={`${process.env.PUBLIC_URL}/docs/plaquette.pdf`}
           onClick={() => onPressOnSocialNetworks("pdf")}
           newTab
         />

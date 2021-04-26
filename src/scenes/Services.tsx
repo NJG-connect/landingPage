@@ -5,7 +5,6 @@ import styles from "./Services.module.css";
 import servicesJson from "../data/services.json";
 import { useTransition, animated } from "react-spring";
 import useContentIsVisible from "../hooks/useElementIsVisible";
-import Pdf from "../data/plaquette.pdf";
 
 function Services() {
   const visible = useContentIsVisible("refService");
@@ -24,7 +23,10 @@ function Services() {
     isVisible
       ? [...servicesJson].map((el) => ({
           ...el,
-          link: el.link === "pdf-link" ? Pdf : el.link,
+          link:
+            el.link === "pdf-link"
+              ? `${process.env.PUBLIC_URL}/docs/plaquette.pdf`
+              : el.link,
         }))
       : [],
     (item) => item.title,
