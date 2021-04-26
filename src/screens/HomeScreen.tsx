@@ -31,15 +31,7 @@ function HomeScreen() {
   useEffect(() => {
     const newUserString = userContext.newUser;
     if (!!newUserString) {
-      const newUser = new Date(Date.parse(newUserString));
-      const diffDaysForNewUserAnimation: number = parseInt(
-        (((new Date().getTime() - newUser.getTime()) /
-          (1000 * 60 * 60 * 24)) as unknown) as string,
-        10
-      );
-      setLoadingAnimation(
-        diffDaysForNewUserAnimation < numberDayBeforeCanAgain
-      );
+      setLoadingAnimation(true);
     }
   }, [userContext.newUser]);
 

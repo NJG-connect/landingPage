@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import images from "../assets/images";
 import { FlipCard } from "../components";
 import styles from "./Services.module.css";
-import servicesJson from "../json/services.json";
+import servicesJson from "../data/services.json";
 import { useTransition, animated } from "react-spring";
 import useContentIsVisible from "../hooks/useElementIsVisible";
 
@@ -20,7 +20,15 @@ function Services() {
   }, [isVisible, visible]);
 
   const transitions = useTransition(
-    isVisible ? servicesJson : [],
+    isVisible
+      ? [...servicesJson].map((el) => ({
+          ...el,
+          link:
+            el.link === "pdf-link"
+              ? `${process.env.PUBLIC_URL}/docs/plaquette.njgconnect.pdf`
+              : el.link,
+        }))
+      : [],
     (item) => item.title,
     {
       unique: true,

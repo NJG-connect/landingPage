@@ -4,7 +4,7 @@ import { useSprings, animated, interpolate } from "react-spring";
 import { useGesture } from "react-use-gesture";
 import projectsImage, { projectsImageType } from "../assets/images/projects";
 import ContentIsVisible from "../hooks/useElementIsVisible";
-import projectsJson from "../json/projects.json";
+import projectsJson from "../data/projects.json";
 
 const formatCards = projectsJson.map((el, index) => ({
   ...el,

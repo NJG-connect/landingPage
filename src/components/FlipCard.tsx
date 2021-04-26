@@ -5,9 +5,12 @@ import styles from "./FlipCard.module.css";
 interface Props {
   data: {
     title: string;
-    description: string;
-    logo: string;
+    description?: string;
+    logo?: string;
     subDescription?: string;
+    logoDescription?: string;
+    submit?: string;
+    link?: string;
   };
 }
 
@@ -53,16 +56,36 @@ function FlipCard({ data }: Props) {
       >
         <div className={styles.flipCardFront}>
           <p className={styles.title}>{data.title}</p>
-          <div
-            dangerouslySetInnerHTML={createMarkup(data.description)}
-            className={styles.description}
-          />
+          {data.logoDescription ? (
+            <img
+              src={images[data.logoDescription as ImageType]}
+              alt="solution"
+              className={styles.imageDescription}
+            />
+          ) : (
+            <div
+              dangerouslySetInnerHTML={createMarkup(data.description!)}
+              className={styles.description}
+            />
+          )}
+
           {data.logo && (
             <img
               src={images[data.logo as ImageType]}
               alt="solution"
               className={styles.image}
             />
+          )}
+
+          {data.submit && data.link && (
+            <a
+              href={data.link}
+              className={styles.button}
+              target="_blank"
+              rel="noreferrer"
+            >
+              {data.submit}
+            </a>
           )}
         </div>
         <div className={styles.flipCardBack}>

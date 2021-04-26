@@ -43,7 +43,9 @@ function SpecificContact({ info }: Props) {
     link.click();
   }
 
-  function onPressOnSocialNetworks(value: "mail" | "phone" | "linkedIn") {
+  function onPressOnSocialNetworks(
+    value: "mail" | "phone" | "linkedIn" | "pdf"
+  ) {
     // GOOGLE ANALYTICS
     import("../utils/reactAnalytics").then(({ createEventGA }) => {
       createEventGA({
@@ -114,6 +116,13 @@ function SpecificContact({ info }: Props) {
         />
         <RowWithIcon title={info.society.name} icon="entreprise" />
         <RowWithIcon
+          title="Consulter la plaquette"
+          icon="brochure"
+          link={`${process.env.PUBLIC_URL}/docs/plaquette.njgconnect.pdf`}
+          onClick={() => onPressOnSocialNetworks("pdf")}
+          newTab
+        />
+        <RowWithIcon
           title={info.society.web}
           placeholder="Site Web"
           icon="web"
@@ -153,6 +162,7 @@ interface RowWithIconProps {
   placeholder?: string;
   link?: string;
   onClick?: () => void;
+  newTab?: boolean;
 }
 
 function RowWithIcon(props: RowWithIconProps) {
@@ -172,6 +182,8 @@ function RowWithIcon(props: RowWithIconProps) {
           href={props.link}
           className={props.link ? styles.link : ""}
           onClick={props.onClick}
+          target={props.newTab ? "_blank" : ""}
+          rel="noreferrer"
         >
           <p>{props.title}</p>
           {props.placeholder && (
