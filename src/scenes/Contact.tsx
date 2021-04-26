@@ -90,6 +90,7 @@ function Contact(props: Props) {
                 onChange={(name: string) => setInfoUser({ ...infoUser, name })}
                 label="Nom"
                 required
+                nameForAutoComplete="nom"
               />
               <TextInput
                 value={infoUser.society}
@@ -97,6 +98,7 @@ function Contact(props: Props) {
                   setInfoUser({ ...infoUser, society })
                 }
                 label="Société"
+                nameForAutoComplete="organization"
               />
               <TextInput
                 required
@@ -105,6 +107,7 @@ function Contact(props: Props) {
                   setInfoUser({ ...infoUser, contact })
                 }
                 label="Mail / Tel"
+                nameForAutoComplete="phone"
               />
               <button type="submit" className={styles.button}>
                 <p>Entrer en contact</p>
