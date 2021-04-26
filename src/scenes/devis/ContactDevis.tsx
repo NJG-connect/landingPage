@@ -28,6 +28,7 @@ function ContactDevis({ onSubmit, initialValue, isSending }: Props) {
             onChange={(name: string) => setInfoUser({ ...infoUser, name })}
             label="Nom"
             required
+            nameForAutoComplete="nom"
           />
           <TextInput
             value={infoUser.society}
@@ -35,18 +36,21 @@ function ContactDevis({ onSubmit, initialValue, isSending }: Props) {
               setInfoUser({ ...infoUser, society })
             }
             label="Société"
+            nameForAutoComplete="organization"
           />
           <TextInput
             required
             value={infoUser.tel}
             onChange={(tel: string) => setInfoUser({ ...infoUser, tel })}
             label="Tel"
+            nameForAutoComplete="phone"
           />
           <TextInput
             required
             value={infoUser.mail}
             onChange={(mail: string) => setInfoUser({ ...infoUser, mail })}
             label="Mail"
+            nameForAutoComplete="email"
           />
         </div>
         <div className={styles.timbreDiv}>

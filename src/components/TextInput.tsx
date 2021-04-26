@@ -6,9 +6,16 @@ interface Props {
   label: string;
   value?: string;
   required?: boolean;
+  nameForAutoComplete?: string;
 }
 
-function TextInput({ onChange, required = false, label, value = "" }: Props) {
+function TextInput({
+  onChange,
+  required = false,
+  label,
+  value = "",
+  nameForAutoComplete,
+}: Props) {
   return (
     <div className={styles.group}>
       <input
@@ -18,9 +25,10 @@ function TextInput({ onChange, required = false, label, value = "" }: Props) {
           onChange(ev.target.value)
         }
         value={value}
+        name={nameForAutoComplete}
       />
       <span className={styles.bar}></span>
-      <label>{label}</label>
+      <label htmlFor={nameForAutoComplete}>{label}</label>
     </div>
   );
 }
