@@ -23,6 +23,7 @@ import linkedin from'./linkedin.png';
 import google from'./google.png';
 import contact from'./contact.png';
 import cgu from'./cgu.png';
+import brochure from'./brochure.svg';
 
 const images =  {
   logo,
@@ -50,6 +51,7 @@ const images =  {
   google,
   contact,
   cgu,
+  brochure,
 };
 
 export type ImageType =
@@ -78,6 +80,7 @@ export type ImageType =
 |"linkedin"
 |"google"
 |"contact"
-|"cgu";
+|"cgu"
+|"brochure";
 
 export default images;

@@ -21,5 +21,11 @@
   "title" : "Solution Flex",
   "description":"Composez votre solution selon vos besoins et nous vous éditons un devis allégé sur mesure",
   "logo" : "flex"
+},
+{
+  "title": "Découvrez notre brochure",
+  "logoDescription": "brochure",
+  "submit": "Découvrir",
+  "link": "pdf-link"
 }
 ]
