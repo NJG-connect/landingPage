@@ -53,7 +53,6 @@ const addInfoAirtableForContact = async (data: {
       },
     ],
   };
-  console.log(body);
   return postDataOnAirtable(body, url);
 };
 
