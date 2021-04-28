@@ -1,5 +1,6 @@
 import React, { useContext, useState } from "react";
 import sendEmail from "../api/sendEmail";
+import { addInfoAirtableForContact } from "../api/stockInfoOnAirtable";
 import images from "../assets/images";
 import { TextInput } from "../components";
 import { ToastContext } from "../contexts/ToastContext";
@@ -35,7 +36,12 @@ function Contact(props: Props) {
       !props.mailHasSent
     ) {
       setInfoUser(initialUserValue);
-      await sendEmail(infoUser, "makingContact");
+      const response: { succes: boolean } = await addInfoAirtableForContact(
+        infoUser
+      );
+      if (!response.succes) {
+        await sendEmail(infoUser, "makingContact");
+      }
       props.sendEmail();
 
       // GOOGLE ANALYTICS

@@ -147,4 +147,13 @@ export const supportProjetDevis: SupportProjetDevisType[] = [
   },
 ];
 
+
+export const budgetValue = [
+  { value: 10, label: "Non défini" },
+  { value: 20, label: "léger" },
+  { value: 30, label: "moyen" },
+  { value: 40, label: "correct" },
+  { value: 50, label: "illimité" },
+];
+
 export default devisService;
