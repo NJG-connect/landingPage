@@ -1,17 +1,16 @@
 export const BASE_URL_AIRTABLE = "https://api.airtable.com/";
 
-
 const validateEmail = (mail: string) => {
-  if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail)) {
+  if (/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(mail)) {
     return true;
   }
   return false;
 };
 
 // Regex for return  Phone
- const validatePhone = (phone: string) => {
+const validatePhone = (phone: string) => {
   if (
-    /^[\+]?\d{2,}?[(]?\d{2,}[)]?[-\s\.]?\d{2,}?[-\s\.]?\d{2,}[-\s\.]?\d{0,9}$/.test(
+    /^[+]?\d{2,}?[(]?\d{2,}[)]?[-\s.]?\d{2,}?[-\s.]?\d{2,}[-\s.]?\d{0,9}$/.test(
       phone
     )
   ) {
@@ -21,7 +20,7 @@ const validateEmail = (mail: string) => {
 };
 
 // Regex for return Email or Phone
- const validePhoneOrEmail = (value: string) => {
+const validePhoneOrEmail = (value: string) => {
   if (validateEmail(value)) {
     return "Email";
   } else if (validatePhone(value)) {
@@ -30,18 +29,17 @@ const validateEmail = (mail: string) => {
   return false;
 };
 
-
 const addInfoAirtableForContact = async (data: {
   [value: string]: string | undefined | any;
 }): Promise<{ succes: boolean; data: any }> => {
   const { REACT_APP_AIRTABLE_BASE_ID_CONTACT } = process.env;
   let url = `${BASE_URL_AIRTABLE}v0/${REACT_APP_AIRTABLE_BASE_ID_CONTACT}/Contacts`;
-  const emailOrTel: false | 'Tel' | 'Email' = validePhoneOrEmail(data.contact)
-  let infoEmailOrTel = {}
-  if(!!emailOrTel){
-    infoEmailOrTel= {
-      [emailOrTel as unknown as 'Tel' | 'Email'] : data.contact
-    }
+  const emailOrTel: false | "Tel" | "Email" = validePhoneOrEmail(data.contact);
+  let infoEmailOrTel = {};
+  if (!!emailOrTel) {
+    infoEmailOrTel = {
+      [(emailOrTel as unknown) as "Tel" | "Email"]: data.contact,
+    };
   }
   const body = {
     records: [
@@ -50,11 +48,12 @@ const addInfoAirtableForContact = async (data: {
           Nom: data.name,
           Entreprise: data.society,
           "Email-Tel": data.contact,
-          ...infoEmailOrTel
+          ...infoEmailOrTel,
         },
       },
     ],
   };
+  console.log(body);
   return postDataOnAirtable(body, url);
 };
 
