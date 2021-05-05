@@ -5,6 +5,7 @@ import RangeInput from "../../components/RangeInput";
 import devisService, {
   OptionDevisType,
   supportProjetDevis,
+  budgetValue,
 } from "../../types/Devis";
 import { formatDate } from "../../utils/date";
 import styles from "./SelectProjectDevis.module.css";
@@ -14,14 +15,6 @@ interface Props {
   optionDevisSelected: OptionDevisType[];
   initialValue: AnswersType;
 }
-
-const budgetValue = [
-  { value: 10, label: "Non défini" },
-  { value: 20, label: "léger" },
-  { value: 30, label: "moyen" },
-  { value: 40, label: "correct" },
-  { value: 50, label: "illimité" },
-];
 
 function SelectProjectDevis({
   onSubmit,

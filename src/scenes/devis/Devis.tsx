@@ -1,9 +1,10 @@
 import React, { lazy, useEffect, useState } from "react";
-import { OptionDevisType } from "../../types/Devis";
+import { OptionDevisType, budgetValue } from "../../types/Devis";
 import styles from "./Devis.module.css";
 import SelectProjectDevis from "./SelectProjectDevis";
 import ContactDevis from "./ContactDevis";
 import sendEmail from "../../api/sendEmail";
+import { addInfoAirtableForDevis } from "../../api/stockInfoOnAirtable";
 
 const HeaderDevis = lazy(() => import("./HeaderDevis"));
 const SelectOptionDevis = lazy(() => import("./SelectOptionDevis"));
@@ -74,11 +75,17 @@ function Devis({ onClose, sendEmail: sendEmailProps }: Props) {
   async function handleSubmit(value: ContactDevisType) {
     setIsSending(true);
     setcontactDevis(value);
+
+    const budget = budgetValue.find(
+      (el) => el.value === Number(projectDevisSelected.budget)
+    )?.label;
     const newUserInfo = {
       ...projectDevisSelected,
       ...value,
       type: optionDevisSelected,
+      budget,
     };
+
     // GOOGLE ANALYTICS
     import("../../utils/reactAnalytics").then(({ createEventGA }) => {
       createEventGA({
@@ -86,7 +93,13 @@ function Devis({ onClose, sendEmail: sendEmailProps }: Props) {
         action: "send devis",
       });
     });
-    await sendEmail(newUserInfo, "devis");
+
+    const response: { succes: boolean } = await addInfoAirtableForDevis(
+      newUserInfo
+    );
+    if (!response.succes) {
+      await sendEmail(newUserInfo, "devis");
+    }
 
     // CREATE TIMESTAMP SEND EMAIL
     sendEmailProps();
