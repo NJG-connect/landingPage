@@ -54,16 +54,15 @@ Ce projet est créer en React.Js pour l'installer / le lancer merci de suivre le
 
 |                Key                 |
 | :--------------------------------: |
-|     REACT_APP_EMAILJS_USER_ID      |
-|   REACT_APP_EMAILSJS_TEMPLATE_ID   |
-|   REACT_APP_EMAILSJS_SERVICE_ID    |
+|   REACT_APP_MAILER_SEND_TOKEN_ID   |
+| REACT_APP_MAILER_SEND_TEMPLATE_ID  |
 |     REACT_APP_GOOGLE_ANALYTICS     |
 | REACT_APP_AIRTABLE_BASE_ID_CONTACT |
 |     REACT_APP_AIRTABLE_API_KEY     |
 
 Comme vous avez pu le constater nous avons utilisé les Libs suivantes :
 
-- [EmailJS](https://www.emailjs.com/) afin d'envoyer des mails.
+- [Mailersend](https://www.mailersend.com/) afin d'envoyer des mails.
 - [Airtable](https://airtable.com/) afin de stocker les informations une fois le mail envoyé
 
 ### Commande à savoir

@@ -1,35 +1,125 @@
-const BASE_URL = 'https://api.emailjs.com/api/v1.0/email/send' ; 
+const BASE_URL = "https://api.mailersend.com/v1/email";
 
-const sendEmail = async (body: {[value:string] : string| undefined| any}, template: 'devis' | 'makingContact')=>{
-const {REACT_APP_EMAILSJS_SERVICE_ID, REACT_APP_EMAILSJS_TEMPLATE_ID ,REACT_APP_EMAILJS_USER_ID, REACT_APP_EMAILSJS_TEMPLATE_DEVIS_ID} = process.env
+const sendEmailFromEmailJS = async (
+  body: { [value: string]: string | undefined | any },
+  template: "devis" | "makingContact",
+  forWho: "us" | "user"
+) => {
+  const { REACT_APP_MAILER_SEND_TOKEN_ID, REACT_APP_MAILER_SEND_TEMPLATE_ID } = process.env;
 
- const  data = {
-    service_id: REACT_APP_EMAILSJS_SERVICE_ID,
-    template_id: template === "makingContact" ? REACT_APP_EMAILSJS_TEMPLATE_ID : REACT_APP_EMAILSJS_TEMPLATE_DEVIS_ID,
-    user_id: REACT_APP_EMAILJS_USER_ID,
-    template_params: {
-      ...body
-    }
-};
+  const data = {
+    from: {
+      email: "contact@njgconnect.fr",
+    },
+    to: [
+      {
+        email: forWho === "us" ? "njgconnect@gmail.com" : body.mail,
+      },
+    ],
+    variables: [
+      {
+        email: forWho === "us" ? "njgconnect@gmail.com" : body.mail,
+        substitutions: [
+          {
+            var: "info",
+            value:
+              forWho === "us"
+                ? selectMessageForEmailForUs(body, template)
+                : selectMessageForEmailForUser(template),
+          },
+        ],
+      },
+    ],
+    subject:
+      forWho === "us"
+        ? `Nouvelle demande de ${
+            template === "devis" ? "devis" : "prise de contact"
+          } 😁`
+        : `Votre demande de ${
+            template === "devis" ? "devis" : "prise de contact"
+          }`,
+    template_id: REACT_APP_MAILER_SEND_TEMPLATE_ID,
+  };
 
   const responseFetch = await fetch(BASE_URL, {
-     method: 'POST',
-     headers: {
-      'Content-type': 'application/json',
+    method: "POST",
+    headers: {
+      "Content-type": "application/json",
+      Authorization: `Bearer ${REACT_APP_MAILER_SEND_TOKEN_ID}`,
     },
     body: body ? JSON.stringify(data) : null,
-
-  })
+  });
   let response = {};
   try {
-   const  responseJson = await responseFetch.json();
-   response = { succes: true, data: responseJson }
+    const responseJson = await responseFetch.json();
+    response = { succes: true, data: responseJson };
   } catch (error) {
-    response = { succes: true, data: undefined }
+    response = { succes: true, data: undefined };
   }
-  return response
+  return response;
+};
+
+function selectMessageForEmailForUs(
+  info: { [value: string]: string | undefined | any },
+  template: "makingContact" | "devis"
+) {
+  if (template === "makingContact") {
+    return `
+    Vous avez reçu une nouvelle demande de contact avec :  <br /> <br />
+    
+    Monsieur, Madame :  ${info.name}  <br /> <br />
+    
+    Socièté : ${info.society}  <br /> <br />
+    
+    contact : ${info.contact}  <br /> <br />
+    
+    L'Équipe Njg Connect,  <br />
+    🤗
+    `;
+  }
+
+  return `
+      Vous avez reçu une nouvelle demande de contact avec :  <br /> <br />
+
+      Monsieur, Madame :  ${info.name} <br /> <br />
+
+      Socièté : ${info.society} <br /> <br />
+
+      téléphone : ${info.tel} <br /> <br />
+
+      Email : ${info.mail} <br /> <br />
+
+      Type de projet  : ${info.type} <br /> <br />
+
+      Service souhaité : ${info.project} <br /> <br />
+
+      Support ( si dev ) : ${info.support} <br /> <br />
+
+      Description du Project : ${info.moreDescription} <br /> <br />
+
+      Deadline : ${info.deadline} <br /> <br />
+
+      Budget Alloué : ${info.budget} <br /> <br /><br /> 
+
+ 
+      L'Équipe Njg Connect, <br /> <br />
+
+      🤗
+    `;
 }
 
+function selectMessageForEmailForUser(template: "makingContact" | "devis") {
+  return `Bonjour, <br />
+    Nous avons bien reçu votre demande ${
+      template === "devis" ? "de devis" : "de prise de contact"
+    }.<br />
+    Nous vous remercions de l'intérêt que vous nous portez et ne manquerons pas de revenir vers vous dans les plus bref délai   <br /> <br />
 
+    -------------
+    <br /> <br />
+    L’équipe NJG connect <br />
+    🙂
+  `;
+}
 
-export default sendEmail;
+export default sendEmailFromEmailJS;
