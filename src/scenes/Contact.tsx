@@ -1,9 +1,10 @@
 import React, { useContext, useState } from "react";
-import sendEmail from "../api/sendEmail";
+import sendEmailFromEmailJS from "../api/sendEmail";
 import { addInfoAirtableForContact } from "../api/stockInfoOnAirtable";
 import images from "../assets/images";
 import { TextInput } from "../components";
 import { ToastContext } from "../contexts/ToastContext";
+import { validePhoneOrEmail } from "../utils/validators";
 import styles from "./Contact.module.css";
 
 interface Props {
@@ -40,7 +41,18 @@ function Contact(props: Props) {
         infoUser
       );
       if (!response.succes) {
-        await sendEmail(infoUser, "makingContact");
+        await sendEmailFromEmailJS(infoUser, "makingContact", "us");
+      }
+
+      const emailOrTel: false | "Tel" | "Email" = validePhoneOrEmail(
+        infoUser.contact
+      );
+      if (emailOrTel === "Email") {
+        await sendEmailFromEmailJS(
+          { ...infoUser, mail: infoUser.contact },
+          "makingContact",
+          "user"
+        );
       }
       props.sendEmail();
 

@@ -3,7 +3,7 @@ import { OptionDevisType, budgetValue } from "../../types/Devis";
 import styles from "./Devis.module.css";
 import SelectProjectDevis from "./SelectProjectDevis";
 import ContactDevis from "./ContactDevis";
-import sendEmail from "../../api/sendEmail";
+import sendEmailFromEmailJS from "../../api/sendEmail";
 import { addInfoAirtableForDevis } from "../../api/stockInfoOnAirtable";
 
 const HeaderDevis = lazy(() => import("./HeaderDevis"));
@@ -98,9 +98,10 @@ function Devis({ onClose, sendEmail: sendEmailProps }: Props) {
       newUserInfo
     );
     if (!response.succes) {
-      await sendEmail(newUserInfo, "devis");
+      await sendEmailFromEmailJS(newUserInfo, "devis", "us");
     }
 
+    await sendEmailFromEmailJS(newUserInfo, "devis", "user");
     // CREATE TIMESTAMP SEND EMAIL
     sendEmailProps();
     const timer = setTimeout(() => {
