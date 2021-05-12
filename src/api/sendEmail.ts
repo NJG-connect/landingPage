@@ -1,11 +1,11 @@
-const BASE_URL = "https://api.mailersend.com/v1/email";
+const BASE_URL = "/.netlify/functions/sendMail";
 
 const sendEmailFromEmailJS = async (
   body: { [value: string]: string | undefined | any },
   template: "devis" | "makingContact",
   forWho: "us" | "user"
 ) => {
-  const { REACT_APP_MAILER_SEND_TOKEN_ID, REACT_APP_MAILER_SEND_TEMPLATE_ID } = process.env;
+  const { REACT_APP_MAILER_SEND_TEMPLATE_ID } = process.env;
 
   const data = {
     from: {
@@ -45,16 +45,15 @@ const sendEmailFromEmailJS = async (
     method: "POST",
     headers: {
       "Content-type": "application/json",
-      Authorization: `Bearer ${REACT_APP_MAILER_SEND_TOKEN_ID}`,
     },
     body: body ? JSON.stringify(data) : null,
   });
   let response = {};
   try {
-    const responseJson = await responseFetch.json();
+    const responseJson = await responseFetch.json();    
     response = { succes: true, data: responseJson };
   } catch (error) {
-    response = { succes: true, data: undefined };
+    response = { succes: false, data: error };
   }
   return response;
 };
@@ -71,11 +70,7 @@ function selectMessageForEmailForUs(
     
     Socièté : ${info.society}  <br /> <br />
     
-    contact : ${info.contact}  <br /> <br />
-    
-    L'Équipe Njg Connect,  <br />
-    🤗
-    `;
+    contact : ${info.contact}  <br />`;
   }
 
   return `
@@ -99,26 +94,16 @@ function selectMessageForEmailForUs(
 
       Deadline : ${info.deadline} <br /> <br />
 
-      Budget Alloué : ${info.budget} <br /> <br /><br /> 
-
- 
-      L'Équipe Njg Connect, <br /> <br />
-
-      🤗
-    `;
+      Budget Alloué : ${info.budget} <br /> <br />`;
 }
 
 function selectMessageForEmailForUser(template: "makingContact" | "devis") {
-  return `Bonjour, <br />
-    Nous avons bien reçu votre demande ${
+  return `Nous avons bien reçu votre demande ${
       template === "devis" ? "de devis" : "de prise de contact"
     }.<br />
     Nous vous remercions de l'intérêt que vous nous portez et ne manquerons pas de revenir vers vous dans les plus bref délai   <br /> <br />
 
     -------------
-    <br /> <br />
-    L’équipe NJG connect <br />
-    🙂
   `;
 }
 
