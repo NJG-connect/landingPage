@@ -40,10 +40,13 @@ function Contact(props: Props) {
       const response: { succes: boolean } = await addInfoAirtableForContact(
         infoUser
       );
+
+      // if fail on Airtable, send email to us
       if (!response.succes) {
         await sendEmailFromEmailJS(infoUser, "makingContact", "us");
       }
 
+      // if user have email send a confirmation Email
       const emailOrTel: false | "Tel" | "Email" = validePhoneOrEmail(
         infoUser.contact
       );

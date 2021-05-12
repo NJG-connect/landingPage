@@ -97,10 +97,13 @@ function Devis({ onClose, sendEmail: sendEmailProps }: Props) {
     const response: { succes: boolean } = await addInfoAirtableForDevis(
       newUserInfo
     );
+
+    // if fail on Airtable, send email to us
     if (!response.succes) {
       await sendEmailFromEmailJS(newUserInfo, "devis", "us");
     }
 
+    // send a confirmation Email
     await sendEmailFromEmailJS(newUserInfo, "devis", "user");
     // CREATE TIMESTAMP SEND EMAIL
     sendEmailProps();
