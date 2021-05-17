@@ -9,6 +9,7 @@ where 0 corresponds when the element reaches the top edges or the element is ful
 and 100 correspond so when the element arrives at the bottom is not yet visible
 
 if you block the body, HTML you need change document.body to document.getElementById("root")!.
+actually we dont use body anymore, cause we cant have the smooth scroll soo we use window
 */
 
 const origineMarginElement = 85;
@@ -21,12 +22,10 @@ function ContentIsVisible(
   const [windowHeight, setWindowHeight] = useState(window.innerHeight);
 
   useEffect(() => {
-    if (document.body !== null) {
-      document.body.addEventListener("scroll", () =>
-        setisVisible(isInViewport())
-      );
+    if (window) {
+      window.addEventListener("scroll", () => setisVisible(isInViewport()));
       return () => {
-        document.body.removeEventListener("scroll", () =>
+        window.removeEventListener("scroll", () =>
           setisVisible(isInViewport())
         );
       };
