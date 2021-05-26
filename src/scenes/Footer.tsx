@@ -17,7 +17,7 @@ const footerOption: { image: ImageType; link: string }[] = [
 
 function Footer() {
   return (
-    <footer className={styles.footer}>
+    <footer id="footer" className={styles.footer}>
       <div>
         {footerOption.map((el, index) => (
           <a
