@@ -39,7 +39,7 @@ function Services() {
   );
 
   return (
-    <div id={styles.services}>
+    <div id="services" className={styles.services}>
       <div id={styles.container}>
         <h2 className={styles.title}>NOS SERVICES</h2>
         <div

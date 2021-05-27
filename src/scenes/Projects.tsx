@@ -32,7 +32,7 @@ function Projects() {
   const [gone] = useState(() => new Set()); // The set flags all the cards that are flicked out
   const [currentCard, setCurrentCard] = useState(cards.length - 1);
   const [isVisible, setVisible] = useState(false);
-  const visible = ContentIsVisible(styles.projects);
+  const visible = ContentIsVisible("projects");
   const [activeAnimation, setActiveAnimation] = useState<boolean | 0>(false);
 
   useEffect(() => {
@@ -124,7 +124,7 @@ function Projects() {
   }, [activeAnimation]);
 
   return (
-    <div id={styles.projects}>
+    <div id="projects" className={styles.projects}>
       <div id={styles.container}>
         <h2 className={styles.title}>NOS RÉALISATIONS</h2>
         <div className={styles.content}>

@@ -15,7 +15,7 @@ import Devis from "../scenes/devis/Devis";
 
 const numberDayBeforeCanAgain = 1;
 
-function HomeScreen() {
+function HomeScreen(props: any) {
   const { show } = useContext(ToastContext);
   const { userContext, setUserContext } = useContext(UserInfoContext);
   const [mailHasSent, setMailHasSent] = useState(false);
@@ -41,13 +41,35 @@ function HomeScreen() {
     if (!!lastEmailSendString) {
       const lastEmailSend = new Date(Date.parse(lastEmailSendString));
       const diffDays: number = parseInt(
-        (((new Date().getTime() - lastEmailSend.getTime()) /
-          (1000 * 60 * 60 * 24)) as unknown) as string,
+        ((new Date().getTime() - lastEmailSend.getTime()) /
+          (1000 * 60 * 60 * 24)) as unknown as string,
         10
       );
       setMailHasSent(diffDays < numberDayBeforeCanAgain);
     }
   }, [userContext.lastEmailSend]);
+
+  useEffect(() => {
+    if (!!props.location.hash) {
+      const hashWords = props.location.hash.split("#");
+      const hashWord = hashWords[hashWords.length - 1];
+      if (
+        ["header", "services", "process", "projects", "footer"].includes(
+          hashWord
+        )
+      ) {
+        document
+          .getElementById(hashWord)!
+          .scrollIntoView({ behavior: "smooth" });
+      } else if (hashWord === "contact") {
+        document
+          .getElementById("footer")!
+          .scrollIntoView({ behavior: "smooth" });
+      } else if (hashWord === "devis") {
+        setdoADevis(true);
+      }
+    }
+  }, [props.location.hash]);
 
   const handleAnimationIsDone = () => {
     setLoadingAnimation(true);

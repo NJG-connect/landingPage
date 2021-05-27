@@ -4,7 +4,7 @@ import styles from "./Header.module.css";
 
 function Header() {
   return (
-    <div id={styles.header}>
+    <div id="header" className={styles.header}>
       <div id={styles.container}>
         <img src={images.circle} className={styles.circle} alt="Logo" />
         <img src={images.tiles} className={styles.tiles} alt="Logo" />
