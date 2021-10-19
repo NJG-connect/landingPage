@@ -25,6 +25,11 @@
   "keyPhoto":"project5"
 },
   {
+  "title" : "Lyatom CMS",
+  "description":"Lyatom CMS est un système de gestion de contenu qui vous permet de gérer votre site web en quelques clics à partir d'une interface claire et épurée, depuis n'importe quel type d'appareil (Mobile/PC).",
+  "keyPhoto":"project7"
+},
+  {
   "title" : "Et si c’était vous ?",
   "description":"Rendez-vous sur la page Devis 😉",
   "keyPhoto":"project6"
