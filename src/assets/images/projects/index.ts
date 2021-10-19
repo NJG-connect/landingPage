@@ -5,9 +5,11 @@ import project3 from './project-3.png';
 import project4 from './project-4.png';
 import project5 from './project-5.png';
 import project6 from './project-6.png';
+import project7 from './project-7.png';
 
 const projectsImage ={
   project6,
+  project7,
   project1,
   project2,
   project3,
@@ -21,6 +23,7 @@ export type projectsImageType =
  | 'project3'
  | 'project4'
  | 'project5'
+ | 'project7'
  | 'project6';
 
 
