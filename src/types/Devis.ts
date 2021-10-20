@@ -119,6 +119,11 @@ const devisService: DevisServiceType = {
         description: "Campagne de publicité ciblée",
         image: "adworks",
       },
+      {
+        title: "Diagnostic digital",
+        description: "Nos experts chez vous 🧐",
+        image: "diag",
+      },
     ],
   },
 };
@@ -146,7 +151,6 @@ export const supportProjetDevis: SupportProjetDevisType[] = [
     image: "tel2",
   },
 ];
-
 
 export const budgetValue = [
   { value: 10, label: "Non défini" },

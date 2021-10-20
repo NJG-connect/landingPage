@@ -13,6 +13,7 @@ import stand from "./stand.png";
 import analytics from "./analytics.png";
 import googleBusiness from "./googleBusiness.png";
 import adworks from "./adworks.png";
+import diag from "./diag.png";
 
 const imagesProjectDevis = {
   application,
@@ -30,6 +31,7 @@ const imagesProjectDevis = {
   analytics,
   googleBusiness,
   adworks,
+  diag,
 };
 
 export type ImageProjectDevisType =
@@ -47,7 +49,7 @@ export type ImageProjectDevisType =
   | "stand"
   | "analytics"
   | "googleBusiness"
-  | "adworks";
+  | "adworks"
+  | "diag";
 
-
-  export default imagesProjectDevis;
+export default imagesProjectDevis;

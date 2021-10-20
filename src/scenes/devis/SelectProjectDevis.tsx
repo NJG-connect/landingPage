@@ -21,9 +21,8 @@ function SelectProjectDevis({
   optionDevisSelected,
   initialValue,
 }: Props) {
-  const [answersProject, setAnswersProject] = useState<AnswersType>(
-    initialValue
-  );
+  const [answersProject, setAnswersProject] =
+    useState<AnswersType>(initialValue);
 
   function onSelect(value: string, keyAnswer: "project" | "support") {
     let newAnswer = [];
@@ -55,13 +54,9 @@ function SelectProjectDevis({
       {optionDevisSelected.map((type, indexType) => (
         <div className={styles.contentScroll} key={type}>
           {devisService[type].projects.map((el, indexProject) => {
-            const cardWidth =
-              el.description.length > 25
-                ? styles.cardProjectMax
-                : styles.cardProjectMin;
             return (
               <div
-                className={`${styles.cardProject} ${cardWidth} ${
+                className={`${styles.cardProject} ${
                   answersProject.project.includes(el.title)
                     ? styles.cardProjectSelected
                     : ""
