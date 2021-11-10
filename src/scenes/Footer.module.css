@@ -1,6 +1,6 @@
 .footer {
   width: 100vw;
-  height: 55px;
+  height: auto;
   background: #252559;
   position: relative;
   overflow-y: hidden;
@@ -8,7 +8,7 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  padding: 0 35px;
+  padding: 20px 35px;
 }
 
 .footer > p {
@@ -33,7 +33,6 @@
 @media screen and (max-width: 415px) {
   .footer {
     flex-direction: column;
-    height: 90px;
     justify-content: center;
   }
 

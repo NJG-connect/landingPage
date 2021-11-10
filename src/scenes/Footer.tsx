@@ -13,6 +13,7 @@ const footerOption: { image: ImageType; link: string }[] = [
   },
   { image: "contact", link: "/contact" },
   { image: "cgu", link: "/cgu" },
+  { image: "lyatom", link: "https://lyatomcms.njgconnect.fr/" },
 ];
 
 function Footer() {
